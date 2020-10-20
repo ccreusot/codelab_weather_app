@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:dio/dio.dart';
+import 'models/weather.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -38,10 +41,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getWeather();
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
     );
+  }
+
+  void getWeather() async {
+    try {
+      Response response = await Dio().get("https://www.prevision-meteo.ch/services/json/lat=46.259lng=5.235");
+      print(Weather.fromJson(response.data));
+    } catch (e) {
+      print(e);
+    }
   }
 }

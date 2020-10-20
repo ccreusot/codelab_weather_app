@@ -12,45 +12,90 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) {
   return WeatherData.fromJson(json);
 }
 
+/// @nodoc
 class _$WeatherTearOff {
   const _$WeatherTearOff();
 
 // ignore: unused_element
-  WeatherData call(CityInfo cityInfo, ForecastInfo forecastInfo,
-      CurrentCondition currentCondition) {
+  WeatherData call(
+      @JsonKey(name: "city_info") CityInfo cityInfo,
+      @JsonKey(name: "forecast_info") ForecastInfo forecastInfo,
+      @JsonKey(name: "current_condition") CurrentCondition currentCondition,
+      @JsonKey(name: "fcst_day_0") ForecastDay fcstDay0,
+      @JsonKey(name: "fcst_day_1") ForecastDay fcstDay1,
+      @JsonKey(name: "fcst_day_2") ForecastDay fcstDay2,
+      @JsonKey(name: "fcst_day_3") ForecastDay fcstDay3,
+      @JsonKey(name: "fcst_day_4") ForecastDay fcstDay4) {
     return WeatherData(
       cityInfo,
       forecastInfo,
       currentCondition,
+      fcstDay0,
+      fcstDay1,
+      fcstDay2,
+      fcstDay3,
+      fcstDay4,
     );
+  }
+
+// ignore: unused_element
+  Weather fromJson(Map<String, Object> json) {
+    return Weather.fromJson(json);
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Weather = _$WeatherTearOff();
 
+/// @nodoc
 mixin _$Weather {
+  @JsonKey(name: "city_info")
   CityInfo get cityInfo;
+  @JsonKey(name: "forecast_info")
   ForecastInfo get forecastInfo;
+  @JsonKey(name: "current_condition")
   CurrentCondition get currentCondition;
+  @JsonKey(name: "fcst_day_0")
+  ForecastDay get fcstDay0;
+  @JsonKey(name: "fcst_day_1")
+  ForecastDay get fcstDay1;
+  @JsonKey(name: "fcst_day_2")
+  ForecastDay get fcstDay2;
+  @JsonKey(name: "fcst_day_3")
+  ForecastDay get fcstDay3;
+  @JsonKey(name: "fcst_day_4")
+  ForecastDay get fcstDay4;
 
   Map<String, dynamic> toJson();
   $WeatherCopyWith<Weather> get copyWith;
 }
 
+/// @nodoc
 abstract class $WeatherCopyWith<$Res> {
   factory $WeatherCopyWith(Weather value, $Res Function(Weather) then) =
       _$WeatherCopyWithImpl<$Res>;
   $Res call(
-      {CityInfo cityInfo,
-      ForecastInfo forecastInfo,
-      CurrentCondition currentCondition});
+      {@JsonKey(name: "city_info") CityInfo cityInfo,
+      @JsonKey(name: "forecast_info") ForecastInfo forecastInfo,
+      @JsonKey(name: "current_condition") CurrentCondition currentCondition,
+      @JsonKey(name: "fcst_day_0") ForecastDay fcstDay0,
+      @JsonKey(name: "fcst_day_1") ForecastDay fcstDay1,
+      @JsonKey(name: "fcst_day_2") ForecastDay fcstDay2,
+      @JsonKey(name: "fcst_day_3") ForecastDay fcstDay3,
+      @JsonKey(name: "fcst_day_4") ForecastDay fcstDay4});
 
   $CityInfoCopyWith<$Res> get cityInfo;
   $ForecastInfoCopyWith<$Res> get forecastInfo;
   $CurrentConditionCopyWith<$Res> get currentCondition;
+  $ForecastDayCopyWith<$Res> get fcstDay0;
+  $ForecastDayCopyWith<$Res> get fcstDay1;
+  $ForecastDayCopyWith<$Res> get fcstDay2;
+  $ForecastDayCopyWith<$Res> get fcstDay3;
+  $ForecastDayCopyWith<$Res> get fcstDay4;
 }
 
+/// @nodoc
 class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
   _$WeatherCopyWithImpl(this._value, this._then);
 
@@ -63,6 +108,11 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
     Object cityInfo = freezed,
     Object forecastInfo = freezed,
     Object currentCondition = freezed,
+    Object fcstDay0 = freezed,
+    Object fcstDay1 = freezed,
+    Object fcstDay2 = freezed,
+    Object fcstDay3 = freezed,
+    Object fcstDay4 = freezed,
   }) {
     return _then(_value.copyWith(
       cityInfo: cityInfo == freezed ? _value.cityInfo : cityInfo as CityInfo,
@@ -72,6 +122,11 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
       currentCondition: currentCondition == freezed
           ? _value.currentCondition
           : currentCondition as CurrentCondition,
+      fcstDay0: fcstDay0 == freezed ? _value.fcstDay0 : fcstDay0 as ForecastDay,
+      fcstDay1: fcstDay1 == freezed ? _value.fcstDay1 : fcstDay1 as ForecastDay,
+      fcstDay2: fcstDay2 == freezed ? _value.fcstDay2 : fcstDay2 as ForecastDay,
+      fcstDay3: fcstDay3 == freezed ? _value.fcstDay3 : fcstDay3 as ForecastDay,
+      fcstDay4: fcstDay4 == freezed ? _value.fcstDay4 : fcstDay4 as ForecastDay,
     ));
   }
 
@@ -104,17 +159,73 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
       return _then(_value.copyWith(currentCondition: value));
     });
   }
+
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay0 {
+    if (_value.fcstDay0 == null) {
+      return null;
+    }
+    return $ForecastDayCopyWith<$Res>(_value.fcstDay0, (value) {
+      return _then(_value.copyWith(fcstDay0: value));
+    });
+  }
+
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay1 {
+    if (_value.fcstDay1 == null) {
+      return null;
+    }
+    return $ForecastDayCopyWith<$Res>(_value.fcstDay1, (value) {
+      return _then(_value.copyWith(fcstDay1: value));
+    });
+  }
+
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay2 {
+    if (_value.fcstDay2 == null) {
+      return null;
+    }
+    return $ForecastDayCopyWith<$Res>(_value.fcstDay2, (value) {
+      return _then(_value.copyWith(fcstDay2: value));
+    });
+  }
+
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay3 {
+    if (_value.fcstDay3 == null) {
+      return null;
+    }
+    return $ForecastDayCopyWith<$Res>(_value.fcstDay3, (value) {
+      return _then(_value.copyWith(fcstDay3: value));
+    });
+  }
+
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay4 {
+    if (_value.fcstDay4 == null) {
+      return null;
+    }
+    return $ForecastDayCopyWith<$Res>(_value.fcstDay4, (value) {
+      return _then(_value.copyWith(fcstDay4: value));
+    });
+  }
 }
 
+/// @nodoc
 abstract class $WeatherDataCopyWith<$Res> implements $WeatherCopyWith<$Res> {
   factory $WeatherDataCopyWith(
           WeatherData value, $Res Function(WeatherData) then) =
       _$WeatherDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {CityInfo cityInfo,
-      ForecastInfo forecastInfo,
-      CurrentCondition currentCondition});
+      {@JsonKey(name: "city_info") CityInfo cityInfo,
+      @JsonKey(name: "forecast_info") ForecastInfo forecastInfo,
+      @JsonKey(name: "current_condition") CurrentCondition currentCondition,
+      @JsonKey(name: "fcst_day_0") ForecastDay fcstDay0,
+      @JsonKey(name: "fcst_day_1") ForecastDay fcstDay1,
+      @JsonKey(name: "fcst_day_2") ForecastDay fcstDay2,
+      @JsonKey(name: "fcst_day_3") ForecastDay fcstDay3,
+      @JsonKey(name: "fcst_day_4") ForecastDay fcstDay4});
 
   @override
   $CityInfoCopyWith<$Res> get cityInfo;
@@ -122,8 +233,19 @@ abstract class $WeatherDataCopyWith<$Res> implements $WeatherCopyWith<$Res> {
   $ForecastInfoCopyWith<$Res> get forecastInfo;
   @override
   $CurrentConditionCopyWith<$Res> get currentCondition;
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay0;
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay1;
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay2;
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay3;
+  @override
+  $ForecastDayCopyWith<$Res> get fcstDay4;
 }
 
+/// @nodoc
 class _$WeatherDataCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
     implements $WeatherDataCopyWith<$Res> {
   _$WeatherDataCopyWithImpl(
@@ -138,6 +260,11 @@ class _$WeatherDataCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
     Object cityInfo = freezed,
     Object forecastInfo = freezed,
     Object currentCondition = freezed,
+    Object fcstDay0 = freezed,
+    Object fcstDay1 = freezed,
+    Object fcstDay2 = freezed,
+    Object fcstDay3 = freezed,
+    Object fcstDay4 = freezed,
   }) {
     return _then(WeatherData(
       cityInfo == freezed ? _value.cityInfo : cityInfo as CityInfo,
@@ -147,30 +274,68 @@ class _$WeatherDataCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
       currentCondition == freezed
           ? _value.currentCondition
           : currentCondition as CurrentCondition,
+      fcstDay0 == freezed ? _value.fcstDay0 : fcstDay0 as ForecastDay,
+      fcstDay1 == freezed ? _value.fcstDay1 : fcstDay1 as ForecastDay,
+      fcstDay2 == freezed ? _value.fcstDay2 : fcstDay2 as ForecastDay,
+      fcstDay3 == freezed ? _value.fcstDay3 : fcstDay3 as ForecastDay,
+      fcstDay4 == freezed ? _value.fcstDay4 : fcstDay4 as ForecastDay,
     ));
   }
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$WeatherData implements WeatherData {
-  const _$WeatherData(this.cityInfo, this.forecastInfo, this.currentCondition)
+  const _$WeatherData(
+      @JsonKey(name: "city_info") this.cityInfo,
+      @JsonKey(name: "forecast_info") this.forecastInfo,
+      @JsonKey(name: "current_condition") this.currentCondition,
+      @JsonKey(name: "fcst_day_0") this.fcstDay0,
+      @JsonKey(name: "fcst_day_1") this.fcstDay1,
+      @JsonKey(name: "fcst_day_2") this.fcstDay2,
+      @JsonKey(name: "fcst_day_3") this.fcstDay3,
+      @JsonKey(name: "fcst_day_4") this.fcstDay4)
       : assert(cityInfo != null),
         assert(forecastInfo != null),
-        assert(currentCondition != null);
+        assert(currentCondition != null),
+        assert(fcstDay0 != null),
+        assert(fcstDay1 != null),
+        assert(fcstDay2 != null),
+        assert(fcstDay3 != null),
+        assert(fcstDay4 != null);
 
   factory _$WeatherData.fromJson(Map<String, dynamic> json) =>
       _$_$WeatherDataFromJson(json);
 
   @override
+  @JsonKey(name: "city_info")
   final CityInfo cityInfo;
   @override
+  @JsonKey(name: "forecast_info")
   final ForecastInfo forecastInfo;
   @override
+  @JsonKey(name: "current_condition")
   final CurrentCondition currentCondition;
+  @override
+  @JsonKey(name: "fcst_day_0")
+  final ForecastDay fcstDay0;
+  @override
+  @JsonKey(name: "fcst_day_1")
+  final ForecastDay fcstDay1;
+  @override
+  @JsonKey(name: "fcst_day_2")
+  final ForecastDay fcstDay2;
+  @override
+  @JsonKey(name: "fcst_day_3")
+  final ForecastDay fcstDay3;
+  @override
+  @JsonKey(name: "fcst_day_4")
+  final ForecastDay fcstDay4;
 
   @override
   String toString() {
-    return 'Weather(cityInfo: $cityInfo, forecastInfo: $forecastInfo, currentCondition: $currentCondition)';
+    return 'Weather(cityInfo: $cityInfo, forecastInfo: $forecastInfo, currentCondition: $currentCondition, fcstDay0: $fcstDay0, fcstDay1: $fcstDay1, fcstDay2: $fcstDay2, fcstDay3: $fcstDay3, fcstDay4: $fcstDay4)';
   }
 
   @override
@@ -185,7 +350,22 @@ class _$WeatherData implements WeatherData {
                     .equals(other.forecastInfo, forecastInfo)) &&
             (identical(other.currentCondition, currentCondition) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentCondition, currentCondition)));
+                    .equals(other.currentCondition, currentCondition)) &&
+            (identical(other.fcstDay0, fcstDay0) ||
+                const DeepCollectionEquality()
+                    .equals(other.fcstDay0, fcstDay0)) &&
+            (identical(other.fcstDay1, fcstDay1) ||
+                const DeepCollectionEquality()
+                    .equals(other.fcstDay1, fcstDay1)) &&
+            (identical(other.fcstDay2, fcstDay2) ||
+                const DeepCollectionEquality()
+                    .equals(other.fcstDay2, fcstDay2)) &&
+            (identical(other.fcstDay3, fcstDay3) ||
+                const DeepCollectionEquality()
+                    .equals(other.fcstDay3, fcstDay3)) &&
+            (identical(other.fcstDay4, fcstDay4) ||
+                const DeepCollectionEquality()
+                    .equals(other.fcstDay4, fcstDay4)));
   }
 
   @override
@@ -193,7 +373,12 @@ class _$WeatherData implements WeatherData {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(cityInfo) ^
       const DeepCollectionEquality().hash(forecastInfo) ^
-      const DeepCollectionEquality().hash(currentCondition);
+      const DeepCollectionEquality().hash(currentCondition) ^
+      const DeepCollectionEquality().hash(fcstDay0) ^
+      const DeepCollectionEquality().hash(fcstDay1) ^
+      const DeepCollectionEquality().hash(fcstDay2) ^
+      const DeepCollectionEquality().hash(fcstDay3) ^
+      const DeepCollectionEquality().hash(fcstDay4);
 
   @override
   $WeatherDataCopyWith<WeatherData> get copyWith =>
@@ -206,18 +391,43 @@ class _$WeatherData implements WeatherData {
 }
 
 abstract class WeatherData implements Weather {
-  const factory WeatherData(CityInfo cityInfo, ForecastInfo forecastInfo,
-      CurrentCondition currentCondition) = _$WeatherData;
+  const factory WeatherData(
+      @JsonKey(name: "city_info") CityInfo cityInfo,
+      @JsonKey(name: "forecast_info") ForecastInfo forecastInfo,
+      @JsonKey(name: "current_condition") CurrentCondition currentCondition,
+      @JsonKey(name: "fcst_day_0") ForecastDay fcstDay0,
+      @JsonKey(name: "fcst_day_1") ForecastDay fcstDay1,
+      @JsonKey(name: "fcst_day_2") ForecastDay fcstDay2,
+      @JsonKey(name: "fcst_day_3") ForecastDay fcstDay3,
+      @JsonKey(name: "fcst_day_4") ForecastDay fcstDay4) = _$WeatherData;
 
   factory WeatherData.fromJson(Map<String, dynamic> json) =
       _$WeatherData.fromJson;
 
   @override
+  @JsonKey(name: "city_info")
   CityInfo get cityInfo;
   @override
+  @JsonKey(name: "forecast_info")
   ForecastInfo get forecastInfo;
   @override
+  @JsonKey(name: "current_condition")
   CurrentCondition get currentCondition;
+  @override
+  @JsonKey(name: "fcst_day_0")
+  ForecastDay get fcstDay0;
+  @override
+  @JsonKey(name: "fcst_day_1")
+  ForecastDay get fcstDay1;
+  @override
+  @JsonKey(name: "fcst_day_2")
+  ForecastDay get fcstDay2;
+  @override
+  @JsonKey(name: "fcst_day_3")
+  ForecastDay get fcstDay3;
+  @override
+  @JsonKey(name: "fcst_day_4")
+  ForecastDay get fcstDay4;
   @override
   $WeatherDataCopyWith<WeatherData> get copyWith;
 }
@@ -226,6 +436,7 @@ CityInfo _$CityInfoFromJson(Map<String, dynamic> json) {
   return CityInfoData.fromJson(json);
 }
 
+/// @nodoc
 class _$CityInfoTearOff {
   const _$CityInfoTearOff();
 
@@ -242,11 +453,18 @@ class _$CityInfoTearOff {
       sunset,
     );
   }
+
+// ignore: unused_element
+  CityInfo fromJson(Map<String, Object> json) {
+    return CityInfo.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CityInfo = _$CityInfoTearOff();
 
+/// @nodoc
 mixin _$CityInfo {
   String get name;
   String get country;
@@ -260,6 +478,7 @@ mixin _$CityInfo {
   $CityInfoCopyWith<CityInfo> get copyWith;
 }
 
+/// @nodoc
 abstract class $CityInfoCopyWith<$Res> {
   factory $CityInfoCopyWith(CityInfo value, $Res Function(CityInfo) then) =
       _$CityInfoCopyWithImpl<$Res>;
@@ -273,6 +492,7 @@ abstract class $CityInfoCopyWith<$Res> {
       String sunset});
 }
 
+/// @nodoc
 class _$CityInfoCopyWithImpl<$Res> implements $CityInfoCopyWith<$Res> {
   _$CityInfoCopyWithImpl(this._value, this._then);
 
@@ -302,6 +522,7 @@ class _$CityInfoCopyWithImpl<$Res> implements $CityInfoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class $CityInfoDataCopyWith<$Res> implements $CityInfoCopyWith<$Res> {
   factory $CityInfoDataCopyWith(
           CityInfoData value, $Res Function(CityInfoData) then) =
@@ -317,6 +538,7 @@ abstract class $CityInfoDataCopyWith<$Res> implements $CityInfoCopyWith<$Res> {
       String sunset});
 }
 
+/// @nodoc
 class _$CityInfoDataCopyWithImpl<$Res> extends _$CityInfoCopyWithImpl<$Res>
     implements $CityInfoDataCopyWith<$Res> {
   _$CityInfoDataCopyWithImpl(
@@ -349,6 +571,8 @@ class _$CityInfoDataCopyWithImpl<$Res> extends _$CityInfoCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$CityInfoData implements CityInfoData {
   const _$CityInfoData(this.name, this.country, this.latitude, this.longitude,
       this.elevation, this.sunrise, this.sunset)
@@ -464,38 +688,48 @@ ForecastInfo _$ForecastInfoFromJson(Map<String, dynamic> json) {
   return ForecastInfoData.fromJson(json);
 }
 
+/// @nodoc
 class _$ForecastInfoTearOff {
   const _$ForecastInfoTearOff();
 
 // ignore: unused_element
-  ForecastInfoData call(double latitude, double longitude, double elevation) {
+  ForecastInfoData call(String latitude, String longitude, String elevation) {
     return ForecastInfoData(
       latitude,
       longitude,
       elevation,
     );
   }
+
+// ignore: unused_element
+  ForecastInfo fromJson(Map<String, Object> json) {
+    return ForecastInfo.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ForecastInfo = _$ForecastInfoTearOff();
 
+/// @nodoc
 mixin _$ForecastInfo {
-  double get latitude;
-  double get longitude;
-  double get elevation;
+  String get latitude;
+  String get longitude;
+  String get elevation;
 
   Map<String, dynamic> toJson();
   $ForecastInfoCopyWith<ForecastInfo> get copyWith;
 }
 
+/// @nodoc
 abstract class $ForecastInfoCopyWith<$Res> {
   factory $ForecastInfoCopyWith(
           ForecastInfo value, $Res Function(ForecastInfo) then) =
       _$ForecastInfoCopyWithImpl<$Res>;
-  $Res call({double latitude, double longitude, double elevation});
+  $Res call({String latitude, String longitude, String elevation});
 }
 
+/// @nodoc
 class _$ForecastInfoCopyWithImpl<$Res> implements $ForecastInfoCopyWith<$Res> {
   _$ForecastInfoCopyWithImpl(this._value, this._then);
 
@@ -510,22 +744,24 @@ class _$ForecastInfoCopyWithImpl<$Res> implements $ForecastInfoCopyWith<$Res> {
     Object elevation = freezed,
   }) {
     return _then(_value.copyWith(
-      latitude: latitude == freezed ? _value.latitude : latitude as double,
-      longitude: longitude == freezed ? _value.longitude : longitude as double,
-      elevation: elevation == freezed ? _value.elevation : elevation as double,
+      latitude: latitude == freezed ? _value.latitude : latitude as String,
+      longitude: longitude == freezed ? _value.longitude : longitude as String,
+      elevation: elevation == freezed ? _value.elevation : elevation as String,
     ));
   }
 }
 
+/// @nodoc
 abstract class $ForecastInfoDataCopyWith<$Res>
     implements $ForecastInfoCopyWith<$Res> {
   factory $ForecastInfoDataCopyWith(
           ForecastInfoData value, $Res Function(ForecastInfoData) then) =
       _$ForecastInfoDataCopyWithImpl<$Res>;
   @override
-  $Res call({double latitude, double longitude, double elevation});
+  $Res call({String latitude, String longitude, String elevation});
 }
 
+/// @nodoc
 class _$ForecastInfoDataCopyWithImpl<$Res>
     extends _$ForecastInfoCopyWithImpl<$Res>
     implements $ForecastInfoDataCopyWith<$Res> {
@@ -543,14 +779,16 @@ class _$ForecastInfoDataCopyWithImpl<$Res>
     Object elevation = freezed,
   }) {
     return _then(ForecastInfoData(
-      latitude == freezed ? _value.latitude : latitude as double,
-      longitude == freezed ? _value.longitude : longitude as double,
-      elevation == freezed ? _value.elevation : elevation as double,
+      latitude == freezed ? _value.latitude : latitude as String,
+      longitude == freezed ? _value.longitude : longitude as String,
+      elevation == freezed ? _value.elevation : elevation as String,
     ));
   }
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$ForecastInfoData implements ForecastInfoData {
   const _$ForecastInfoData(this.latitude, this.longitude, this.elevation)
       : assert(latitude != null),
@@ -561,11 +799,11 @@ class _$ForecastInfoData implements ForecastInfoData {
       _$_$ForecastInfoDataFromJson(json);
 
   @override
-  final double latitude;
+  final String latitude;
   @override
-  final double longitude;
+  final String longitude;
   @override
-  final double elevation;
+  final String elevation;
 
   @override
   String toString() {
@@ -606,17 +844,17 @@ class _$ForecastInfoData implements ForecastInfoData {
 
 abstract class ForecastInfoData implements ForecastInfo {
   const factory ForecastInfoData(
-      double latitude, double longitude, double elevation) = _$ForecastInfoData;
+      String latitude, String longitude, String elevation) = _$ForecastInfoData;
 
   factory ForecastInfoData.fromJson(Map<String, dynamic> json) =
       _$ForecastInfoData.fromJson;
 
   @override
-  double get latitude;
+  String get latitude;
   @override
-  double get longitude;
+  String get longitude;
   @override
-  double get elevation;
+  String get elevation;
   @override
   $ForecastInfoDataCopyWith<ForecastInfoData> get copyWith;
 }
@@ -625,6 +863,7 @@ CurrentCondition _$CurrentConditionFromJson(Map<String, dynamic> json) {
   return CurrentConditionData.fromJson(json);
 }
 
+/// @nodoc
 class _$CurrentConditionTearOff {
   const _$CurrentConditionTearOff();
 
@@ -633,15 +872,15 @@ class _$CurrentConditionTearOff {
       String date,
       String hour,
       int tmp,
-      int wndSpd,
-      int wndGust,
-      String wndDir,
+      @JsonKey(name: "wnd_spd") int wndSpd,
+      @JsonKey(name: "wnd_gust") int wndGust,
+      @JsonKey(name: "wnd_dir") String wndDir,
       double pressure,
       int humidity,
       String condition,
-      String conditionKey,
+      @JsonKey(name: "condition_key") String conditionKey,
       String icon,
-      String iconBig) {
+      @JsonKey(name: "icon_big") String iconBig) {
     return CurrentConditionData(
       date,
       hour,
@@ -657,29 +896,42 @@ class _$CurrentConditionTearOff {
       iconBig,
     );
   }
+
+// ignore: unused_element
+  CurrentCondition fromJson(Map<String, Object> json) {
+    return CurrentCondition.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CurrentCondition = _$CurrentConditionTearOff();
 
+/// @nodoc
 mixin _$CurrentCondition {
   String get date;
   String get hour;
   int get tmp;
+  @JsonKey(name: "wnd_spd")
   int get wndSpd;
+  @JsonKey(name: "wnd_gust")
   int get wndGust;
+  @JsonKey(name: "wnd_dir")
   String get wndDir;
   double get pressure;
   int get humidity;
   String get condition;
+  @JsonKey(name: "condition_key")
   String get conditionKey;
   String get icon;
+  @JsonKey(name: "icon_big")
   String get iconBig;
 
   Map<String, dynamic> toJson();
   $CurrentConditionCopyWith<CurrentCondition> get copyWith;
 }
 
+/// @nodoc
 abstract class $CurrentConditionCopyWith<$Res> {
   factory $CurrentConditionCopyWith(
           CurrentCondition value, $Res Function(CurrentCondition) then) =
@@ -688,17 +940,18 @@ abstract class $CurrentConditionCopyWith<$Res> {
       {String date,
       String hour,
       int tmp,
-      int wndSpd,
-      int wndGust,
-      String wndDir,
+      @JsonKey(name: "wnd_spd") int wndSpd,
+      @JsonKey(name: "wnd_gust") int wndGust,
+      @JsonKey(name: "wnd_dir") String wndDir,
       double pressure,
       int humidity,
       String condition,
-      String conditionKey,
+      @JsonKey(name: "condition_key") String conditionKey,
       String icon,
-      String iconBig});
+      @JsonKey(name: "icon_big") String iconBig});
 }
 
+/// @nodoc
 class _$CurrentConditionCopyWithImpl<$Res>
     implements $CurrentConditionCopyWith<$Res> {
   _$CurrentConditionCopyWithImpl(this._value, this._then);
@@ -741,6 +994,7 @@ class _$CurrentConditionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class $CurrentConditionDataCopyWith<$Res>
     implements $CurrentConditionCopyWith<$Res> {
   factory $CurrentConditionDataCopyWith(CurrentConditionData value,
@@ -751,17 +1005,18 @@ abstract class $CurrentConditionDataCopyWith<$Res>
       {String date,
       String hour,
       int tmp,
-      int wndSpd,
-      int wndGust,
-      String wndDir,
+      @JsonKey(name: "wnd_spd") int wndSpd,
+      @JsonKey(name: "wnd_gust") int wndGust,
+      @JsonKey(name: "wnd_dir") String wndDir,
       double pressure,
       int humidity,
       String condition,
-      String conditionKey,
+      @JsonKey(name: "condition_key") String conditionKey,
       String icon,
-      String iconBig});
+      @JsonKey(name: "icon_big") String iconBig});
 }
 
+/// @nodoc
 class _$CurrentConditionDataCopyWithImpl<$Res>
     extends _$CurrentConditionCopyWithImpl<$Res>
     implements $CurrentConditionDataCopyWith<$Res> {
@@ -805,20 +1060,22 @@ class _$CurrentConditionDataCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$CurrentConditionData implements CurrentConditionData {
   const _$CurrentConditionData(
       this.date,
       this.hour,
       this.tmp,
-      this.wndSpd,
-      this.wndGust,
-      this.wndDir,
+      @JsonKey(name: "wnd_spd") this.wndSpd,
+      @JsonKey(name: "wnd_gust") this.wndGust,
+      @JsonKey(name: "wnd_dir") this.wndDir,
       this.pressure,
       this.humidity,
       this.condition,
-      this.conditionKey,
+      @JsonKey(name: "condition_key") this.conditionKey,
       this.icon,
-      this.iconBig)
+      @JsonKey(name: "icon_big") this.iconBig)
       : assert(date != null),
         assert(hour != null),
         assert(tmp != null),
@@ -842,10 +1099,13 @@ class _$CurrentConditionData implements CurrentConditionData {
   @override
   final int tmp;
   @override
+  @JsonKey(name: "wnd_spd")
   final int wndSpd;
   @override
+  @JsonKey(name: "wnd_gust")
   final int wndGust;
   @override
+  @JsonKey(name: "wnd_dir")
   final String wndDir;
   @override
   final double pressure;
@@ -854,10 +1114,12 @@ class _$CurrentConditionData implements CurrentConditionData {
   @override
   final String condition;
   @override
+  @JsonKey(name: "condition_key")
   final String conditionKey;
   @override
   final String icon;
   @override
+  @JsonKey(name: "icon_big")
   final String iconBig;
 
   @override
@@ -932,15 +1194,15 @@ abstract class CurrentConditionData implements CurrentCondition {
       String date,
       String hour,
       int tmp,
-      int wndSpd,
-      int wndGust,
-      String wndDir,
+      @JsonKey(name: "wnd_spd") int wndSpd,
+      @JsonKey(name: "wnd_gust") int wndGust,
+      @JsonKey(name: "wnd_dir") String wndDir,
       double pressure,
       int humidity,
       String condition,
-      String conditionKey,
+      @JsonKey(name: "condition_key") String conditionKey,
       String icon,
-      String iconBig) = _$CurrentConditionData;
+      @JsonKey(name: "icon_big") String iconBig) = _$CurrentConditionData;
 
   factory CurrentConditionData.fromJson(Map<String, dynamic> json) =
       _$CurrentConditionData.fromJson;
@@ -952,10 +1214,13 @@ abstract class CurrentConditionData implements CurrentCondition {
   @override
   int get tmp;
   @override
+  @JsonKey(name: "wnd_spd")
   int get wndSpd;
   @override
+  @JsonKey(name: "wnd_gust")
   int get wndGust;
   @override
+  @JsonKey(name: "wnd_dir")
   String get wndDir;
   @override
   double get pressure;
@@ -964,11 +1229,558 @@ abstract class CurrentConditionData implements CurrentCondition {
   @override
   String get condition;
   @override
+  @JsonKey(name: "condition_key")
   String get conditionKey;
   @override
   String get icon;
   @override
+  @JsonKey(name: "icon_big")
   String get iconBig;
   @override
   $CurrentConditionDataCopyWith<CurrentConditionData> get copyWith;
+}
+
+ForecastDay _$ForecastDayFromJson(Map<String, dynamic> json) {
+  return ForecastDayData.fromJson(json);
+}
+
+/// @nodoc
+class _$ForecastDayTearOff {
+  const _$ForecastDayTearOff();
+
+// ignore: unused_element
+  ForecastDayData call(
+      String date,
+      @JsonKey(name: "day_short") String dayShort,
+      @JsonKey(name: "day_long") String dayLong,
+      int tmin,
+      int tmax,
+      String condition,
+      @JsonKey(name: "condition_key") String conditionKey,
+      String icon,
+      @JsonKey(name: "icon_big") String iconBig,
+      @JsonKey(name: "hourly_data") Map<String, HourlyData> hourlyData) {
+    return ForecastDayData(
+      date,
+      dayShort,
+      dayLong,
+      tmin,
+      tmax,
+      condition,
+      conditionKey,
+      icon,
+      iconBig,
+      hourlyData,
+    );
+  }
+
+// ignore: unused_element
+  ForecastDay fromJson(Map<String, Object> json) {
+    return ForecastDay.fromJson(json);
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $ForecastDay = _$ForecastDayTearOff();
+
+/// @nodoc
+mixin _$ForecastDay {
+  String get date;
+  @JsonKey(name: "day_short")
+  String get dayShort;
+  @JsonKey(name: "day_long")
+  String get dayLong;
+  int get tmin;
+  int get tmax;
+  String get condition;
+  @JsonKey(name: "condition_key")
+  String get conditionKey;
+  String get icon;
+  @JsonKey(name: "icon_big")
+  String get iconBig;
+  @JsonKey(name: "hourly_data")
+  Map<String, HourlyData> get hourlyData;
+
+  Map<String, dynamic> toJson();
+  $ForecastDayCopyWith<ForecastDay> get copyWith;
+}
+
+/// @nodoc
+abstract class $ForecastDayCopyWith<$Res> {
+  factory $ForecastDayCopyWith(
+          ForecastDay value, $Res Function(ForecastDay) then) =
+      _$ForecastDayCopyWithImpl<$Res>;
+  $Res call(
+      {String date,
+      @JsonKey(name: "day_short") String dayShort,
+      @JsonKey(name: "day_long") String dayLong,
+      int tmin,
+      int tmax,
+      String condition,
+      @JsonKey(name: "condition_key") String conditionKey,
+      String icon,
+      @JsonKey(name: "icon_big") String iconBig,
+      @JsonKey(name: "hourly_data") Map<String, HourlyData> hourlyData});
+}
+
+/// @nodoc
+class _$ForecastDayCopyWithImpl<$Res> implements $ForecastDayCopyWith<$Res> {
+  _$ForecastDayCopyWithImpl(this._value, this._then);
+
+  final ForecastDay _value;
+  // ignore: unused_field
+  final $Res Function(ForecastDay) _then;
+
+  @override
+  $Res call({
+    Object date = freezed,
+    Object dayShort = freezed,
+    Object dayLong = freezed,
+    Object tmin = freezed,
+    Object tmax = freezed,
+    Object condition = freezed,
+    Object conditionKey = freezed,
+    Object icon = freezed,
+    Object iconBig = freezed,
+    Object hourlyData = freezed,
+  }) {
+    return _then(_value.copyWith(
+      date: date == freezed ? _value.date : date as String,
+      dayShort: dayShort == freezed ? _value.dayShort : dayShort as String,
+      dayLong: dayLong == freezed ? _value.dayLong : dayLong as String,
+      tmin: tmin == freezed ? _value.tmin : tmin as int,
+      tmax: tmax == freezed ? _value.tmax : tmax as int,
+      condition: condition == freezed ? _value.condition : condition as String,
+      conditionKey: conditionKey == freezed
+          ? _value.conditionKey
+          : conditionKey as String,
+      icon: icon == freezed ? _value.icon : icon as String,
+      iconBig: iconBig == freezed ? _value.iconBig : iconBig as String,
+      hourlyData: hourlyData == freezed
+          ? _value.hourlyData
+          : hourlyData as Map<String, HourlyData>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class $ForecastDayDataCopyWith<$Res>
+    implements $ForecastDayCopyWith<$Res> {
+  factory $ForecastDayDataCopyWith(
+          ForecastDayData value, $Res Function(ForecastDayData) then) =
+      _$ForecastDayDataCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String date,
+      @JsonKey(name: "day_short") String dayShort,
+      @JsonKey(name: "day_long") String dayLong,
+      int tmin,
+      int tmax,
+      String condition,
+      @JsonKey(name: "condition_key") String conditionKey,
+      String icon,
+      @JsonKey(name: "icon_big") String iconBig,
+      @JsonKey(name: "hourly_data") Map<String, HourlyData> hourlyData});
+}
+
+/// @nodoc
+class _$ForecastDayDataCopyWithImpl<$Res>
+    extends _$ForecastDayCopyWithImpl<$Res>
+    implements $ForecastDayDataCopyWith<$Res> {
+  _$ForecastDayDataCopyWithImpl(
+      ForecastDayData _value, $Res Function(ForecastDayData) _then)
+      : super(_value, (v) => _then(v as ForecastDayData));
+
+  @override
+  ForecastDayData get _value => super._value as ForecastDayData;
+
+  @override
+  $Res call({
+    Object date = freezed,
+    Object dayShort = freezed,
+    Object dayLong = freezed,
+    Object tmin = freezed,
+    Object tmax = freezed,
+    Object condition = freezed,
+    Object conditionKey = freezed,
+    Object icon = freezed,
+    Object iconBig = freezed,
+    Object hourlyData = freezed,
+  }) {
+    return _then(ForecastDayData(
+      date == freezed ? _value.date : date as String,
+      dayShort == freezed ? _value.dayShort : dayShort as String,
+      dayLong == freezed ? _value.dayLong : dayLong as String,
+      tmin == freezed ? _value.tmin : tmin as int,
+      tmax == freezed ? _value.tmax : tmax as int,
+      condition == freezed ? _value.condition : condition as String,
+      conditionKey == freezed ? _value.conditionKey : conditionKey as String,
+      icon == freezed ? _value.icon : icon as String,
+      iconBig == freezed ? _value.iconBig : iconBig as String,
+      hourlyData == freezed
+          ? _value.hourlyData
+          : hourlyData as Map<String, HourlyData>,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$ForecastDayData implements ForecastDayData {
+  const _$ForecastDayData(
+      this.date,
+      @JsonKey(name: "day_short") this.dayShort,
+      @JsonKey(name: "day_long") this.dayLong,
+      this.tmin,
+      this.tmax,
+      this.condition,
+      @JsonKey(name: "condition_key") this.conditionKey,
+      this.icon,
+      @JsonKey(name: "icon_big") this.iconBig,
+      @JsonKey(name: "hourly_data") this.hourlyData)
+      : assert(date != null),
+        assert(dayShort != null),
+        assert(dayLong != null),
+        assert(tmin != null),
+        assert(tmax != null),
+        assert(condition != null),
+        assert(conditionKey != null),
+        assert(icon != null),
+        assert(iconBig != null),
+        assert(hourlyData != null);
+
+  factory _$ForecastDayData.fromJson(Map<String, dynamic> json) =>
+      _$_$ForecastDayDataFromJson(json);
+
+  @override
+  final String date;
+  @override
+  @JsonKey(name: "day_short")
+  final String dayShort;
+  @override
+  @JsonKey(name: "day_long")
+  final String dayLong;
+  @override
+  final int tmin;
+  @override
+  final int tmax;
+  @override
+  final String condition;
+  @override
+  @JsonKey(name: "condition_key")
+  final String conditionKey;
+  @override
+  final String icon;
+  @override
+  @JsonKey(name: "icon_big")
+  final String iconBig;
+  @override
+  @JsonKey(name: "hourly_data")
+  final Map<String, HourlyData> hourlyData;
+
+  @override
+  String toString() {
+    return 'ForecastDay(date: $date, dayShort: $dayShort, dayLong: $dayLong, tmin: $tmin, tmax: $tmax, condition: $condition, conditionKey: $conditionKey, icon: $icon, iconBig: $iconBig, hourlyData: $hourlyData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ForecastDayData &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.dayShort, dayShort) ||
+                const DeepCollectionEquality()
+                    .equals(other.dayShort, dayShort)) &&
+            (identical(other.dayLong, dayLong) ||
+                const DeepCollectionEquality()
+                    .equals(other.dayLong, dayLong)) &&
+            (identical(other.tmin, tmin) ||
+                const DeepCollectionEquality().equals(other.tmin, tmin)) &&
+            (identical(other.tmax, tmax) ||
+                const DeepCollectionEquality().equals(other.tmax, tmax)) &&
+            (identical(other.condition, condition) ||
+                const DeepCollectionEquality()
+                    .equals(other.condition, condition)) &&
+            (identical(other.conditionKey, conditionKey) ||
+                const DeepCollectionEquality()
+                    .equals(other.conditionKey, conditionKey)) &&
+            (identical(other.icon, icon) ||
+                const DeepCollectionEquality().equals(other.icon, icon)) &&
+            (identical(other.iconBig, iconBig) ||
+                const DeepCollectionEquality()
+                    .equals(other.iconBig, iconBig)) &&
+            (identical(other.hourlyData, hourlyData) ||
+                const DeepCollectionEquality()
+                    .equals(other.hourlyData, hourlyData)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(dayShort) ^
+      const DeepCollectionEquality().hash(dayLong) ^
+      const DeepCollectionEquality().hash(tmin) ^
+      const DeepCollectionEquality().hash(tmax) ^
+      const DeepCollectionEquality().hash(condition) ^
+      const DeepCollectionEquality().hash(conditionKey) ^
+      const DeepCollectionEquality().hash(icon) ^
+      const DeepCollectionEquality().hash(iconBig) ^
+      const DeepCollectionEquality().hash(hourlyData);
+
+  @override
+  $ForecastDayDataCopyWith<ForecastDayData> get copyWith =>
+      _$ForecastDayDataCopyWithImpl<ForecastDayData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$ForecastDayDataToJson(this);
+  }
+}
+
+abstract class ForecastDayData implements ForecastDay {
+  const factory ForecastDayData(
+          String date,
+          @JsonKey(name: "day_short") String dayShort,
+          @JsonKey(name: "day_long") String dayLong,
+          int tmin,
+          int tmax,
+          String condition,
+          @JsonKey(name: "condition_key") String conditionKey,
+          String icon,
+          @JsonKey(name: "icon_big") String iconBig,
+          @JsonKey(name: "hourly_data") Map<String, HourlyData> hourlyData) =
+      _$ForecastDayData;
+
+  factory ForecastDayData.fromJson(Map<String, dynamic> json) =
+      _$ForecastDayData.fromJson;
+
+  @override
+  String get date;
+  @override
+  @JsonKey(name: "day_short")
+  String get dayShort;
+  @override
+  @JsonKey(name: "day_long")
+  String get dayLong;
+  @override
+  int get tmin;
+  @override
+  int get tmax;
+  @override
+  String get condition;
+  @override
+  @JsonKey(name: "condition_key")
+  String get conditionKey;
+  @override
+  String get icon;
+  @override
+  @JsonKey(name: "icon_big")
+  String get iconBig;
+  @override
+  @JsonKey(name: "hourly_data")
+  Map<String, HourlyData> get hourlyData;
+  @override
+  $ForecastDayDataCopyWith<ForecastDayData> get copyWith;
+}
+
+HourlyData _$HourlyDataFromJson(Map<String, dynamic> json) {
+  return HourlyDataData.fromJson(json);
+}
+
+/// @nodoc
+class _$HourlyDataTearOff {
+  const _$HourlyDataTearOff();
+
+// ignore: unused_element
+  HourlyDataData call(
+      @JsonKey(name: "ICON") String icon,
+      @JsonKey(name: "CONDITION") String condition,
+      @JsonKey(name: "CONDITION_KEY") String conditionKey) {
+    return HourlyDataData(
+      icon,
+      condition,
+      conditionKey,
+    );
+  }
+
+// ignore: unused_element
+  HourlyData fromJson(Map<String, Object> json) {
+    return HourlyData.fromJson(json);
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $HourlyData = _$HourlyDataTearOff();
+
+/// @nodoc
+mixin _$HourlyData {
+  @JsonKey(name: "ICON")
+  String get icon;
+  @JsonKey(name: "CONDITION")
+  String get condition;
+  @JsonKey(name: "CONDITION_KEY")
+  String get conditionKey;
+
+  Map<String, dynamic> toJson();
+  $HourlyDataCopyWith<HourlyData> get copyWith;
+}
+
+/// @nodoc
+abstract class $HourlyDataCopyWith<$Res> {
+  factory $HourlyDataCopyWith(
+          HourlyData value, $Res Function(HourlyData) then) =
+      _$HourlyDataCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: "ICON") String icon,
+      @JsonKey(name: "CONDITION") String condition,
+      @JsonKey(name: "CONDITION_KEY") String conditionKey});
+}
+
+/// @nodoc
+class _$HourlyDataCopyWithImpl<$Res> implements $HourlyDataCopyWith<$Res> {
+  _$HourlyDataCopyWithImpl(this._value, this._then);
+
+  final HourlyData _value;
+  // ignore: unused_field
+  final $Res Function(HourlyData) _then;
+
+  @override
+  $Res call({
+    Object icon = freezed,
+    Object condition = freezed,
+    Object conditionKey = freezed,
+  }) {
+    return _then(_value.copyWith(
+      icon: icon == freezed ? _value.icon : icon as String,
+      condition: condition == freezed ? _value.condition : condition as String,
+      conditionKey: conditionKey == freezed
+          ? _value.conditionKey
+          : conditionKey as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class $HourlyDataDataCopyWith<$Res>
+    implements $HourlyDataCopyWith<$Res> {
+  factory $HourlyDataDataCopyWith(
+          HourlyDataData value, $Res Function(HourlyDataData) then) =
+      _$HourlyDataDataCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(name: "ICON") String icon,
+      @JsonKey(name: "CONDITION") String condition,
+      @JsonKey(name: "CONDITION_KEY") String conditionKey});
+}
+
+/// @nodoc
+class _$HourlyDataDataCopyWithImpl<$Res> extends _$HourlyDataCopyWithImpl<$Res>
+    implements $HourlyDataDataCopyWith<$Res> {
+  _$HourlyDataDataCopyWithImpl(
+      HourlyDataData _value, $Res Function(HourlyDataData) _then)
+      : super(_value, (v) => _then(v as HourlyDataData));
+
+  @override
+  HourlyDataData get _value => super._value as HourlyDataData;
+
+  @override
+  $Res call({
+    Object icon = freezed,
+    Object condition = freezed,
+    Object conditionKey = freezed,
+  }) {
+    return _then(HourlyDataData(
+      icon == freezed ? _value.icon : icon as String,
+      condition == freezed ? _value.condition : condition as String,
+      conditionKey == freezed ? _value.conditionKey : conditionKey as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$HourlyDataData implements HourlyDataData {
+  const _$HourlyDataData(
+      @JsonKey(name: "ICON") this.icon,
+      @JsonKey(name: "CONDITION") this.condition,
+      @JsonKey(name: "CONDITION_KEY") this.conditionKey)
+      : assert(icon != null),
+        assert(condition != null),
+        assert(conditionKey != null);
+
+  factory _$HourlyDataData.fromJson(Map<String, dynamic> json) =>
+      _$_$HourlyDataDataFromJson(json);
+
+  @override
+  @JsonKey(name: "ICON")
+  final String icon;
+  @override
+  @JsonKey(name: "CONDITION")
+  final String condition;
+  @override
+  @JsonKey(name: "CONDITION_KEY")
+  final String conditionKey;
+
+  @override
+  String toString() {
+    return 'HourlyData(icon: $icon, condition: $condition, conditionKey: $conditionKey)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is HourlyDataData &&
+            (identical(other.icon, icon) ||
+                const DeepCollectionEquality().equals(other.icon, icon)) &&
+            (identical(other.condition, condition) ||
+                const DeepCollectionEquality()
+                    .equals(other.condition, condition)) &&
+            (identical(other.conditionKey, conditionKey) ||
+                const DeepCollectionEquality()
+                    .equals(other.conditionKey, conditionKey)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(icon) ^
+      const DeepCollectionEquality().hash(condition) ^
+      const DeepCollectionEquality().hash(conditionKey);
+
+  @override
+  $HourlyDataDataCopyWith<HourlyDataData> get copyWith =>
+      _$HourlyDataDataCopyWithImpl<HourlyDataData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$HourlyDataDataToJson(this);
+  }
+}
+
+abstract class HourlyDataData implements HourlyData {
+  const factory HourlyDataData(
+      @JsonKey(name: "ICON") String icon,
+      @JsonKey(name: "CONDITION") String condition,
+      @JsonKey(name: "CONDITION_KEY") String conditionKey) = _$HourlyDataData;
+
+  factory HourlyDataData.fromJson(Map<String, dynamic> json) =
+      _$HourlyDataData.fromJson;
+
+  @override
+  @JsonKey(name: "ICON")
+  String get icon;
+  @override
+  @JsonKey(name: "CONDITION")
+  String get condition;
+  @override
+  @JsonKey(name: "CONDITION_KEY")
+  String get conditionKey;
+  @override
+  $HourlyDataDataCopyWith<HourlyDataData> get copyWith;
 }
