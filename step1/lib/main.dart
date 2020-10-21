@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 import 'models/weather.dart';
 
 void main() {
@@ -51,8 +52,9 @@ class HomePage extends StatelessWidget {
 
   void getWeather() async {
     try {
-      Response response = await Dio().get("https://www.prevision-meteo.ch/services/json/lat=46.259lng=5.235");
-      print(Weather.fromJson(response.data));
+      var client = http.Client();
+      http.Response response = await client.get("https://www.prevision-meteo.ch/services/json/lat=46.259lng=5.235");
+      print(Weather.fromJson(convert.jsonDecode(response.body)));
     } catch (e) {
       print(e);
     }
