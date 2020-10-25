@@ -158,6 +158,7 @@ _$HourlyDataData _$_$HourlyDataDataFromJson(Map<String, dynamic> json) {
     json['ICON'] as String,
     json['CONDITION'] as String,
     json['CONDITION_KEY'] as String,
+    (json['TMP2m'] as num)?.toDouble(),
   );
 }
 
@@ -166,4 +167,5 @@ Map<String, dynamic> _$_$HourlyDataDataToJson(_$HourlyDataData instance) =>
       'ICON': instance.icon,
       'CONDITION': instance.condition,
       'CONDITION_KEY': instance.conditionKey,
+      'TMP2m': instance.tMP2m,
     };

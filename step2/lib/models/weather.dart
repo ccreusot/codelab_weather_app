@@ -109,6 +109,8 @@ abstract class HourlyData with _$HourlyData {
       String condition,
       @JsonKey(name: "CONDITION_KEY")
       String conditionKey,
+      @JsonKey(name: "TMP2m")
+      double tMP2m,
       ) = HourlyDataData;
 
   factory HourlyData.fromJson(Map<String, dynamic> json) =>

@@ -1599,11 +1599,13 @@ class _$HourlyDataTearOff {
   HourlyDataData call(
       @JsonKey(name: "ICON") String icon,
       @JsonKey(name: "CONDITION") String condition,
-      @JsonKey(name: "CONDITION_KEY") String conditionKey) {
+      @JsonKey(name: "CONDITION_KEY") String conditionKey,
+      @JsonKey(name: "TMP2m") double tMP2m) {
     return HourlyDataData(
       icon,
       condition,
       conditionKey,
+      tMP2m,
     );
   }
 
@@ -1625,6 +1627,8 @@ mixin _$HourlyData {
   String get condition;
   @JsonKey(name: "CONDITION_KEY")
   String get conditionKey;
+  @JsonKey(name: "TMP2m")
+  double get tMP2m;
 
   Map<String, dynamic> toJson();
   $HourlyDataCopyWith<HourlyData> get copyWith;
@@ -1638,7 +1642,8 @@ abstract class $HourlyDataCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "ICON") String icon,
       @JsonKey(name: "CONDITION") String condition,
-      @JsonKey(name: "CONDITION_KEY") String conditionKey});
+      @JsonKey(name: "CONDITION_KEY") String conditionKey,
+      @JsonKey(name: "TMP2m") double tMP2m});
 }
 
 /// @nodoc
@@ -1654,6 +1659,7 @@ class _$HourlyDataCopyWithImpl<$Res> implements $HourlyDataCopyWith<$Res> {
     Object icon = freezed,
     Object condition = freezed,
     Object conditionKey = freezed,
+    Object tMP2m = freezed,
   }) {
     return _then(_value.copyWith(
       icon: icon == freezed ? _value.icon : icon as String,
@@ -1661,6 +1667,7 @@ class _$HourlyDataCopyWithImpl<$Res> implements $HourlyDataCopyWith<$Res> {
       conditionKey: conditionKey == freezed
           ? _value.conditionKey
           : conditionKey as String,
+      tMP2m: tMP2m == freezed ? _value.tMP2m : tMP2m as double,
     ));
   }
 }
@@ -1675,7 +1682,8 @@ abstract class $HourlyDataDataCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "ICON") String icon,
       @JsonKey(name: "CONDITION") String condition,
-      @JsonKey(name: "CONDITION_KEY") String conditionKey});
+      @JsonKey(name: "CONDITION_KEY") String conditionKey,
+      @JsonKey(name: "TMP2m") double tMP2m});
 }
 
 /// @nodoc
@@ -1693,11 +1701,13 @@ class _$HourlyDataDataCopyWithImpl<$Res> extends _$HourlyDataCopyWithImpl<$Res>
     Object icon = freezed,
     Object condition = freezed,
     Object conditionKey = freezed,
+    Object tMP2m = freezed,
   }) {
     return _then(HourlyDataData(
       icon == freezed ? _value.icon : icon as String,
       condition == freezed ? _value.condition : condition as String,
       conditionKey == freezed ? _value.conditionKey : conditionKey as String,
+      tMP2m == freezed ? _value.tMP2m : tMP2m as double,
     ));
   }
 }
@@ -1709,10 +1719,12 @@ class _$HourlyDataData implements HourlyDataData {
   const _$HourlyDataData(
       @JsonKey(name: "ICON") this.icon,
       @JsonKey(name: "CONDITION") this.condition,
-      @JsonKey(name: "CONDITION_KEY") this.conditionKey)
+      @JsonKey(name: "CONDITION_KEY") this.conditionKey,
+      @JsonKey(name: "TMP2m") this.tMP2m)
       : assert(icon != null),
         assert(condition != null),
-        assert(conditionKey != null);
+        assert(conditionKey != null),
+        assert(tMP2m != null);
 
   factory _$HourlyDataData.fromJson(Map<String, dynamic> json) =>
       _$_$HourlyDataDataFromJson(json);
@@ -1726,10 +1738,13 @@ class _$HourlyDataData implements HourlyDataData {
   @override
   @JsonKey(name: "CONDITION_KEY")
   final String conditionKey;
+  @override
+  @JsonKey(name: "TMP2m")
+  final double tMP2m;
 
   @override
   String toString() {
-    return 'HourlyData(icon: $icon, condition: $condition, conditionKey: $conditionKey)';
+    return 'HourlyData(icon: $icon, condition: $condition, conditionKey: $conditionKey, tMP2m: $tMP2m)';
   }
 
   @override
@@ -1743,7 +1758,9 @@ class _$HourlyDataData implements HourlyDataData {
                     .equals(other.condition, condition)) &&
             (identical(other.conditionKey, conditionKey) ||
                 const DeepCollectionEquality()
-                    .equals(other.conditionKey, conditionKey)));
+                    .equals(other.conditionKey, conditionKey)) &&
+            (identical(other.tMP2m, tMP2m) ||
+                const DeepCollectionEquality().equals(other.tMP2m, tMP2m)));
   }
 
   @override
@@ -1751,7 +1768,8 @@ class _$HourlyDataData implements HourlyDataData {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(icon) ^
       const DeepCollectionEquality().hash(condition) ^
-      const DeepCollectionEquality().hash(conditionKey);
+      const DeepCollectionEquality().hash(conditionKey) ^
+      const DeepCollectionEquality().hash(tMP2m);
 
   @override
   $HourlyDataDataCopyWith<HourlyDataData> get copyWith =>
@@ -1767,7 +1785,8 @@ abstract class HourlyDataData implements HourlyData {
   const factory HourlyDataData(
       @JsonKey(name: "ICON") String icon,
       @JsonKey(name: "CONDITION") String condition,
-      @JsonKey(name: "CONDITION_KEY") String conditionKey) = _$HourlyDataData;
+      @JsonKey(name: "CONDITION_KEY") String conditionKey,
+      @JsonKey(name: "TMP2m") double tMP2m) = _$HourlyDataData;
 
   factory HourlyDataData.fromJson(Map<String, dynamic> json) =
       _$HourlyDataData.fromJson;
@@ -1781,6 +1800,9 @@ abstract class HourlyDataData implements HourlyData {
   @override
   @JsonKey(name: "CONDITION_KEY")
   String get conditionKey;
+  @override
+  @JsonKey(name: "TMP2m")
+  double get tMP2m;
   @override
   $HourlyDataDataCopyWith<HourlyDataData> get copyWith;
 }
