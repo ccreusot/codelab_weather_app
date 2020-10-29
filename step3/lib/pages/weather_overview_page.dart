@@ -32,44 +32,61 @@ class WeatherOverviewPage extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16.0, right: 16.0),
         child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: Text("Next 4 Days", style: TextStyle(color: Colors.white),),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.network(weather.fcstDay1.iconBig, width: 24,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24.0),
-                  child: Row(
-                    children: [
-                      Text("${weather.fcstDay1.dayLong}, ", style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12
-                      ),),
-                      Text(Jiffy(weather.fcstDay1.date, "dd.MM.yyyy").MMMd, style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 12
-                      ),),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text("${weather.fcstDay1.tmax} ", style: TextStyle(color: Colors.white, fontSize: 14),),
-                      Text("/ ${weather.fcstDay1.tmin}°", style: TextStyle(color: Colors.white70, fontSize: 10),)
-                    ],
-                  ),
-                ),
-              ],
-            )
+            Text("Next 4 Days", style: TextStyle(color: Colors.white),),
+            WeatherDayLine(weather: weather.fcstDay1),
+            WeatherDayLine(weather: weather.fcstDay2),
+            WeatherDayLine(weather: weather.fcstDay3),
+            WeatherDayLine(weather: weather.fcstDay4)
           ],
         ),
+      ),
+    );
+  }
+}
+
+class WeatherDayLine extends StatelessWidget {
+  const WeatherDayLine({
+    Key key,
+    @required this.weather,
+  }) : super(key: key);
+
+  final ForecastDay weather;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 16.0, bottom: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.network(weather.iconBig, width: 24,),
+          Padding(
+            padding: const EdgeInsets.only(left: 24.0),
+            child: Row(
+              children: [
+                Text("${weather.dayLong}, ", style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12
+                ),),
+                Text(Jiffy(weather.date, "dd.MM.yyyy").MMMd, style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12
+                ),),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text("${weather.tmax} ", style: TextStyle(color: Colors.white, fontSize: 14),),
+                Text("/ ${weather.tmin}°", style: TextStyle(color: Colors.white70, fontSize: 10),)
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
