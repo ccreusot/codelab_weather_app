@@ -1,3 +1,5 @@
+import 'package:codelab_weather_app/models/city.dart';
+import 'package:codelab_weather_app/pages/cities_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
@@ -21,7 +23,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final TextEditingController _controller = TextEditingController();
-  final List<String> _cities = [];
+  final List<City> _cities = [];
   SelectedWeatherLocation _selectedLocation = WeatherAroundMe();
 
   @override
@@ -55,11 +57,16 @@ class _HomePageState extends State<HomePage> {
           ListTile(
             selected: (_selectedLocation is WeatherAroundMe),
             selectedTileColor: Colors.blue,
-            leading: Icon(Icons.my_location, color: (_selectedLocation is WeatherAroundMe) ? Colors.white : Colors.black),
+            leading: Icon(Icons.my_location,
+                color: (_selectedLocation is WeatherAroundMe)
+                    ? Colors.white
+                    : Colors.black),
             title: Text(
               "Autour de moi",
               style: TextStyle(
-                color:  (_selectedLocation is WeatherAroundMe) ? Colors.white : Colors.black,
+                color: (_selectedLocation is WeatherAroundMe)
+                    ? Colors.white
+                    : Colors.black,
               ),
             ),
             onTap: () {
@@ -69,15 +76,20 @@ class _HomePageState extends State<HomePage> {
               Navigator.pop(context);
             },
           ),
-          ..._cities.map((e) => ListTile(
-                title: Text(e, style: TextStyle(
-                  color: (_selectedLocation is WeatherInCity && _selectedLocation.location() == e) ? Colors.white : Colors.black,
-                )),
-                selected: (_selectedLocation is WeatherInCity && _selectedLocation.location() == e),
+          ..._cities.map((city) => ListTile(
+                title: Text(city.name,
+                    style: TextStyle(
+                      color: (_selectedLocation is WeatherInCity &&
+                              _selectedLocation.location() == city.url)
+                          ? Colors.white
+                          : Colors.black,
+                    )),
+                selected: (_selectedLocation is WeatherInCity &&
+                    _selectedLocation.location() == city.url),
                 selectedTileColor: Colors.blue,
                 onTap: () {
                   setState(() {
-                    _selectedLocation = WeatherInCity(location: e);
+                    _selectedLocation = WeatherInCity(location: city.url);
                   });
                   Navigator.pop(context);
                 },
@@ -86,38 +98,18 @@ class _HomePageState extends State<HomePage> {
             leading: Icon(Icons.add, color: Colors.black),
             title: Text("Ajouter une ville"),
             onTap: () async {
-              await showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return SimpleDialog(
-                      title: const Text("Ajouter une ville"),
-                      children: [
-                        TextField(
-                          controller: _controller,
-                          decoration: InputDecoration(labelText: 'Ville'),
-                        ),
-                        SimpleDialogOption(
-                            onPressed: () {
-                              setState(() {
-                                _cities.add(_controller.text);
-                              });
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Ajouter')),
-                        SimpleDialogOption(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Annuler'),
-                        )
-                      ],
-                    );
-                  });
+              final result = await Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CitiesPage()));
+              setState(() {
+                _cities.add(result);
+              });
             },
           )
         ],
       )),
-      body: WeatherBody(location: _selectedLocation,),
+      body: WeatherBody(
+        location: _selectedLocation,
+      ),
     );
   }
 }
@@ -125,7 +117,8 @@ class _HomePageState extends State<HomePage> {
 class WeatherBody extends StatefulWidget {
   final SelectedWeatherLocation _selectedLocation;
 
-  WeatherBody({SelectedWeatherLocation location}) : _selectedLocation = location;
+  WeatherBody({SelectedWeatherLocation location})
+      : _selectedLocation = location;
 
   @override
   _WeatherBodyState createState() => _WeatherBodyState();
@@ -140,7 +133,6 @@ class _WeatherBodyState extends State<WeatherBody> {
     super.initState();
     fetchWeather(widget._selectedLocation);
   }
-
 
   @override
   void didUpdateWidget(WeatherBody oldWidget) {
@@ -172,7 +164,7 @@ class _WeatherBodyState extends State<WeatherBody> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Location",
+                                    "Autour de moi",
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
@@ -242,7 +234,6 @@ class _WeatherBodyState extends State<WeatherBody> {
   }
 
   void fetchWeather(SelectedWeatherLocation selectedLocation) async {
-
     var request = "";
     if (selectedLocation is WeatherAroundMe) {
       Location location = Location();
@@ -259,11 +250,12 @@ class _WeatherBodyState extends State<WeatherBody> {
       }
 
       var locationData = await location.getLocation();
-      request = "https://www.prevision-meteo.ch/services/json/lat=${locationData.latitude}lng=${locationData.longitude}";
+      request =
+          "https://www.prevision-meteo.ch/services/json/lat=${locationData.latitude}lng=${locationData.longitude}";
     } else {
-      request = "https://www.prevision-meteo.ch/services/json/${selectedLocation.location()}";
+      request =
+          "https://www.prevision-meteo.ch/services/json/${selectedLocation.location()}";
     }
-
 
     final currentHour = DateTime.now().hour;
 

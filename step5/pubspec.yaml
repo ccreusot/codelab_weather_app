@@ -23,6 +23,7 @@ dependencies:
   intl: ^0.16.1
   jiffy: ^3.0.1
   location: ^3.0.2
+  flag: ^3.0.5
 
 dev_dependencies:
   flutter_test:
