@@ -158,8 +158,8 @@ class _$CitiesStatusTearOff {
   const _$CitiesStatusTearOff();
 
 // ignore: unused_element
-  CitiesSucess success(List<City> city) {
-    return CitiesSucess(
+  CitiesSuccess success(List<City> city) {
+    return CitiesSuccess(
       city,
     );
   }
@@ -191,12 +191,12 @@ mixin _$CitiesStatus {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result success(CitiesSucess value),
+    @required Result success(CitiesSuccess value),
     @required Result error(CitiesError value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result success(CitiesSucess value),
+    Result success(CitiesSuccess value),
     Result error(CitiesError value),
     @required Result orElse(),
   });
@@ -219,36 +219,36 @@ class _$CitiesStatusCopyWithImpl<$Res> implements $CitiesStatusCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $CitiesSucessCopyWith<$Res> {
-  factory $CitiesSucessCopyWith(
-          CitiesSucess value, $Res Function(CitiesSucess) then) =
-      _$CitiesSucessCopyWithImpl<$Res>;
+abstract class $CitiesSuccessCopyWith<$Res> {
+  factory $CitiesSuccessCopyWith(
+          CitiesSuccess value, $Res Function(CitiesSuccess) then) =
+      _$CitiesSuccessCopyWithImpl<$Res>;
   $Res call({List<City> city});
 }
 
 /// @nodoc
-class _$CitiesSucessCopyWithImpl<$Res> extends _$CitiesStatusCopyWithImpl<$Res>
-    implements $CitiesSucessCopyWith<$Res> {
-  _$CitiesSucessCopyWithImpl(
-      CitiesSucess _value, $Res Function(CitiesSucess) _then)
-      : super(_value, (v) => _then(v as CitiesSucess));
+class _$CitiesSuccessCopyWithImpl<$Res> extends _$CitiesStatusCopyWithImpl<$Res>
+    implements $CitiesSuccessCopyWith<$Res> {
+  _$CitiesSuccessCopyWithImpl(
+      CitiesSuccess _value, $Res Function(CitiesSuccess) _then)
+      : super(_value, (v) => _then(v as CitiesSuccess));
 
   @override
-  CitiesSucess get _value => super._value as CitiesSucess;
+  CitiesSuccess get _value => super._value as CitiesSuccess;
 
   @override
   $Res call({
     Object city = freezed,
   }) {
-    return _then(CitiesSucess(
+    return _then(CitiesSuccess(
       city == freezed ? _value.city : city as List<City>,
     ));
   }
 }
 
 /// @nodoc
-class _$CitiesSucess implements CitiesSucess {
-  const _$CitiesSucess(this.city) : assert(city != null);
+class _$CitiesSuccess implements CitiesSuccess {
+  const _$CitiesSuccess(this.city) : assert(city != null);
 
   @override
   final List<City> city;
@@ -261,7 +261,7 @@ class _$CitiesSucess implements CitiesSucess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CitiesSucess &&
+        (other is CitiesSuccess &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)));
   }
@@ -271,8 +271,8 @@ class _$CitiesSucess implements CitiesSucess {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(city);
 
   @override
-  $CitiesSucessCopyWith<CitiesSucess> get copyWith =>
-      _$CitiesSucessCopyWithImpl<CitiesSucess>(this, _$identity);
+  $CitiesSuccessCopyWith<CitiesSuccess> get copyWith =>
+      _$CitiesSuccessCopyWithImpl<CitiesSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -302,7 +302,7 @@ class _$CitiesSucess implements CitiesSucess {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result success(CitiesSucess value),
+    @required Result success(CitiesSuccess value),
     @required Result error(CitiesError value),
   }) {
     assert(success != null);
@@ -313,7 +313,7 @@ class _$CitiesSucess implements CitiesSucess {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result success(CitiesSucess value),
+    Result success(CitiesSuccess value),
     Result error(CitiesError value),
     @required Result orElse(),
   }) {
@@ -325,11 +325,11 @@ class _$CitiesSucess implements CitiesSucess {
   }
 }
 
-abstract class CitiesSucess implements CitiesStatus {
-  const factory CitiesSucess(List<City> city) = _$CitiesSucess;
+abstract class CitiesSuccess implements CitiesStatus {
+  const factory CitiesSuccess(List<City> city) = _$CitiesSuccess;
 
   List<City> get city;
-  $CitiesSucessCopyWith<CitiesSucess> get copyWith;
+  $CitiesSuccessCopyWith<CitiesSuccess> get copyWith;
 }
 
 /// @nodoc
@@ -416,7 +416,7 @@ class _$CitiesError implements CitiesError {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result success(CitiesSucess value),
+    @required Result success(CitiesSuccess value),
     @required Result error(CitiesError value),
   }) {
     assert(success != null);
@@ -427,7 +427,7 @@ class _$CitiesError implements CitiesError {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result success(CitiesSucess value),
+    Result success(CitiesSuccess value),
     Result error(CitiesError value),
     @required Result orElse(),
   }) {

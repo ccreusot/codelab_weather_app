@@ -8,6 +8,7 @@ class AddCityToWatch {
       : _repository = repository;
 
   Future<void> call(City city) async {
+    if (city == null) return;
     await _repository.addCity(city);
   }
 }

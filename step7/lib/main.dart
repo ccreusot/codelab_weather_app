@@ -1,4 +1,3 @@
-import 'package:codelab_weather_app/network/models/city.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -9,8 +8,6 @@ import 'pages/home_page.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(CityClassAdapter());
-  await Hive.openBox<City>('selected_cities');
   await Jiffy.locale("fr");
   runApp(MyApp());
 }

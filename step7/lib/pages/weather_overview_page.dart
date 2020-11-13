@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:codelab_weather_app/network/models/weather.dart';
+import 'package:codelab_weather_app/domain/models/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
@@ -16,18 +16,20 @@ class WeatherOverviewPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Row(
-          children: [
-            Text(
-              "${weather.cityInfo.name},",
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              "${weather.cityInfo.country}",
-              style: TextStyle(color: Colors.white70),
-            )
-          ],
-        ),
+        title: (!weather.fromGeolocation)
+            ? Row(
+                children: [
+                  Text(
+                    "${weather.cityName},",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    "${weather.countryName}",
+                    style: TextStyle(color: Colors.white70),
+                  )
+                ],
+              )
+            : Text("Autour de moi", style: TextStyle(color: Colors.white)),
       ),
       backgroundColor: Colors.blue,
       body: Padding(
@@ -38,10 +40,9 @@ class WeatherOverviewPage extends StatelessWidget {
               "Next 4 Days",
               style: TextStyle(color: Colors.white),
             ),
-            WeatherDayLine(weather: weather.fcstDay1),
-            WeatherDayLine(weather: weather.fcstDay2),
-            WeatherDayLine(weather: weather.fcstDay3),
-            WeatherDayLine(weather: weather.fcstDay4)
+            ...weather.dailyForecast.map((e) => WeatherDayLine(
+                  weather: e,
+                ))
           ],
         ),
       ),
@@ -55,7 +56,7 @@ class WeatherDayLine extends StatelessWidget {
     @required this.weather,
   }) : super(key: key);
 
-  final ForecastDay weather;
+  final DailyForecast weather;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class WeatherDayLine extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.network(
-            weather.iconBig,
+            weather.iconUrl,
             width: 24,
           ),
           Padding(
@@ -74,11 +75,11 @@ class WeatherDayLine extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "${weather.dayLong}, ",
+                  Jiffy(weather.date, "dd/MM/yyyy").E,
                   style: TextStyle(color: Colors.white, fontSize: 12),
                 ),
                 Text(
-                  Jiffy(weather.date, "dd.MM.yyyy").MMMd,
+                  Jiffy(weather.date, "dd/MM/yyyy").MMMd,
                   style: TextStyle(color: Colors.white70, fontSize: 12),
                 ),
               ],
@@ -90,11 +91,11 @@ class WeatherDayLine extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "${weather.tmax} ",
+                  "${weather.temperatureMax} ",
                   style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
                 Text(
-                  "/ ${weather.tmin}°",
+                  "/ ${weather.temperatureMin}°",
                   style: TextStyle(color: Colors.white70, fontSize: 10),
                 )
               ],

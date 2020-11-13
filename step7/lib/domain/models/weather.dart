@@ -9,6 +9,7 @@ abstract class Weather with _$Weather {
       String countryName,
       bool fromGeolocation,
       String date,
+      String condition,
       int temperature,
       int windSpeed,
       int humidity,
@@ -24,7 +25,7 @@ abstract class HourlyForecast with _$HourlyForecast {
   const factory HourlyForecast(
     String hour,
     String icon,
-    String temperature,
+    int temperature,
   ) = HourlyForecastData;
 }
 
@@ -37,6 +38,6 @@ abstract class DailyForecast with _$DailyForecast {
 
 @freezed
 abstract class WeatherStatus with _$WeatherStatus {
-  const factory WeatherStatus.success(Weather weater) = WeatherSuccess;
+  const factory WeatherStatus.success(Weather weather) = WeatherSuccess;
   const factory WeatherStatus.error([String message]) = WeatherError;
 }

@@ -154,12 +154,8 @@ class _$CityTearOff {
   const _$CityTearOff();
 
 // ignore: unused_element
-  CityData call(
-      @HiveField(0) String name,
-      @HiveField(1) @nullable @JsonKey(name: "npa") String zipCode,
-      @HiveField(2) @nullable String region,
-      @HiveField(3) String country,
-      @HiveField(4) String url) {
+  CityData call(String name, @nullable @JsonKey(name: "npa") String zipCode,
+      @nullable String region, String country, String url) {
     return CityData(
       name,
       zipCode,
@@ -181,18 +177,13 @@ const $City = _$CityTearOff();
 
 /// @nodoc
 mixin _$City {
-  @HiveField(0)
   String get name;
-  @HiveField(1)
   @nullable
   @JsonKey(name: "npa")
   String get zipCode;
-  @HiveField(2)
   @nullable
   String get region;
-  @HiveField(3)
   String get country;
-  @HiveField(4)
   String get url;
 
   Map<String, dynamic> toJson();
@@ -204,11 +195,11 @@ abstract class $CityCopyWith<$Res> {
   factory $CityCopyWith(City value, $Res Function(City) then) =
       _$CityCopyWithImpl<$Res>;
   $Res call(
-      {@HiveField(0) String name,
-      @HiveField(1) @nullable @JsonKey(name: "npa") String zipCode,
-      @HiveField(2) @nullable String region,
-      @HiveField(3) String country,
-      @HiveField(4) String url});
+      {String name,
+      @nullable @JsonKey(name: "npa") String zipCode,
+      @nullable String region,
+      String country,
+      String url});
 }
 
 /// @nodoc
@@ -243,11 +234,11 @@ abstract class $CityDataCopyWith<$Res> implements $CityCopyWith<$Res> {
       _$CityDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@HiveField(0) String name,
-      @HiveField(1) @nullable @JsonKey(name: "npa") String zipCode,
-      @HiveField(2) @nullable String region,
-      @HiveField(3) String country,
-      @HiveField(4) String url});
+      {String name,
+      @nullable @JsonKey(name: "npa") String zipCode,
+      @nullable String region,
+      String country,
+      String url});
 }
 
 /// @nodoc
@@ -278,16 +269,11 @@ class _$CityDataCopyWithImpl<$Res> extends _$CityCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
-@HiveType(typeId: 2, adapterName: 'CityClassAdapter')
 
 /// @nodoc
 class _$CityData implements CityData {
-  const _$CityData(
-      @HiveField(0) this.name,
-      @HiveField(1) @nullable @JsonKey(name: "npa") this.zipCode,
-      @HiveField(2) @nullable this.region,
-      @HiveField(3) this.country,
-      @HiveField(4) this.url)
+  const _$CityData(this.name, @nullable @JsonKey(name: "npa") this.zipCode,
+      @nullable this.region, this.country, this.url)
       : assert(name != null),
         assert(country != null),
         assert(url != null);
@@ -296,22 +282,17 @@ class _$CityData implements CityData {
       _$_$CityDataFromJson(json);
 
   @override
-  @HiveField(0)
   final String name;
   @override
-  @HiveField(1)
   @nullable
   @JsonKey(name: "npa")
   final String zipCode;
   @override
-  @HiveField(2)
   @nullable
   final String region;
   @override
-  @HiveField(3)
   final String country;
   @override
-  @HiveField(4)
   final String url;
 
   @override
@@ -358,31 +339,26 @@ class _$CityData implements CityData {
 
 abstract class CityData implements City {
   const factory CityData(
-      @HiveField(0) String name,
-      @HiveField(1) @nullable @JsonKey(name: "npa") String zipCode,
-      @HiveField(2) @nullable String region,
-      @HiveField(3) String country,
-      @HiveField(4) String url) = _$CityData;
+      String name,
+      @nullable @JsonKey(name: "npa") String zipCode,
+      @nullable String region,
+      String country,
+      String url) = _$CityData;
 
   factory CityData.fromJson(Map<String, dynamic> json) = _$CityData.fromJson;
 
   @override
-  @HiveField(0)
   String get name;
   @override
-  @HiveField(1)
   @nullable
   @JsonKey(name: "npa")
   String get zipCode;
   @override
-  @HiveField(2)
   @nullable
   String get region;
   @override
-  @HiveField(3)
   String get country;
   @override
-  @HiveField(4)
   String get url;
   @override
   $CityDataCopyWith<CityData> get copyWith;

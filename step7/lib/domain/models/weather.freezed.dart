@@ -19,6 +19,7 @@ class _$WeatherTearOff {
       String countryName,
       bool fromGeolocation,
       String date,
+      String condition,
       int temperature,
       int windSpeed,
       int humidity,
@@ -32,6 +33,7 @@ class _$WeatherTearOff {
       countryName,
       fromGeolocation,
       date,
+      condition,
       temperature,
       windSpeed,
       humidity,
@@ -54,6 +56,7 @@ mixin _$Weather {
   String get countryName;
   bool get fromGeolocation;
   String get date;
+  String get condition;
   int get temperature;
   int get windSpeed;
   int get humidity;
@@ -75,6 +78,7 @@ abstract class $WeatherCopyWith<$Res> {
       String countryName,
       bool fromGeolocation,
       String date,
+      String condition,
       int temperature,
       int windSpeed,
       int humidity,
@@ -99,6 +103,7 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
     Object countryName = freezed,
     Object fromGeolocation = freezed,
     Object date = freezed,
+    Object condition = freezed,
     Object temperature = freezed,
     Object windSpeed = freezed,
     Object humidity = freezed,
@@ -116,6 +121,7 @@ class _$WeatherCopyWithImpl<$Res> implements $WeatherCopyWith<$Res> {
           ? _value.fromGeolocation
           : fromGeolocation as bool,
       date: date == freezed ? _value.date : date as String,
+      condition: condition == freezed ? _value.condition : condition as String,
       temperature:
           temperature == freezed ? _value.temperature : temperature as int,
       windSpeed: windSpeed == freezed ? _value.windSpeed : windSpeed as int,
@@ -146,6 +152,7 @@ abstract class $WeatherDataCopyWith<$Res> implements $WeatherCopyWith<$Res> {
       String countryName,
       bool fromGeolocation,
       String date,
+      String condition,
       int temperature,
       int windSpeed,
       int humidity,
@@ -172,6 +179,7 @@ class _$WeatherDataCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
     Object countryName = freezed,
     Object fromGeolocation = freezed,
     Object date = freezed,
+    Object condition = freezed,
     Object temperature = freezed,
     Object windSpeed = freezed,
     Object humidity = freezed,
@@ -188,6 +196,7 @@ class _$WeatherDataCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
           ? _value.fromGeolocation
           : fromGeolocation as bool,
       date == freezed ? _value.date : date as String,
+      condition == freezed ? _value.condition : condition as String,
       temperature == freezed ? _value.temperature : temperature as int,
       windSpeed == freezed ? _value.windSpeed : windSpeed as int,
       humidity == freezed ? _value.humidity : humidity as int,
@@ -211,6 +220,7 @@ class _$WeatherData implements WeatherData {
       this.countryName,
       this.fromGeolocation,
       this.date,
+      this.condition,
       this.temperature,
       this.windSpeed,
       this.humidity,
@@ -223,6 +233,7 @@ class _$WeatherData implements WeatherData {
         assert(countryName != null),
         assert(fromGeolocation != null),
         assert(date != null),
+        assert(condition != null),
         assert(temperature != null),
         assert(windSpeed != null),
         assert(humidity != null),
@@ -240,6 +251,8 @@ class _$WeatherData implements WeatherData {
   final bool fromGeolocation;
   @override
   final String date;
+  @override
+  final String condition;
   @override
   final int temperature;
   @override
@@ -259,7 +272,7 @@ class _$WeatherData implements WeatherData {
 
   @override
   String toString() {
-    return 'Weather(cityName: $cityName, countryName: $countryName, fromGeolocation: $fromGeolocation, date: $date, temperature: $temperature, windSpeed: $windSpeed, humidity: $humidity, windDirection: $windDirection, pressure: $pressure, iconUrl: $iconUrl, hourlyForecast: $hourlyForecast, dailyForecast: $dailyForecast)';
+    return 'Weather(cityName: $cityName, countryName: $countryName, fromGeolocation: $fromGeolocation, date: $date, condition: $condition, temperature: $temperature, windSpeed: $windSpeed, humidity: $humidity, windDirection: $windDirection, pressure: $pressure, iconUrl: $iconUrl, hourlyForecast: $hourlyForecast, dailyForecast: $dailyForecast)';
   }
 
   @override
@@ -277,6 +290,9 @@ class _$WeatherData implements WeatherData {
                     .equals(other.fromGeolocation, fromGeolocation)) &&
             (identical(other.date, date) ||
                 const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.condition, condition) ||
+                const DeepCollectionEquality()
+                    .equals(other.condition, condition)) &&
             (identical(other.temperature, temperature) ||
                 const DeepCollectionEquality()
                     .equals(other.temperature, temperature)) &&
@@ -310,6 +326,7 @@ class _$WeatherData implements WeatherData {
       const DeepCollectionEquality().hash(countryName) ^
       const DeepCollectionEquality().hash(fromGeolocation) ^
       const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(condition) ^
       const DeepCollectionEquality().hash(temperature) ^
       const DeepCollectionEquality().hash(windSpeed) ^
       const DeepCollectionEquality().hash(humidity) ^
@@ -330,6 +347,7 @@ abstract class WeatherData implements Weather {
       String countryName,
       bool fromGeolocation,
       String date,
+      String condition,
       int temperature,
       int windSpeed,
       int humidity,
@@ -347,6 +365,8 @@ abstract class WeatherData implements Weather {
   bool get fromGeolocation;
   @override
   String get date;
+  @override
+  String get condition;
   @override
   int get temperature;
   @override
@@ -372,7 +392,7 @@ class _$HourlyForecastTearOff {
   const _$HourlyForecastTearOff();
 
 // ignore: unused_element
-  HourlyForecastData call(String hour, String icon, String temperature) {
+  HourlyForecastData call(String hour, String icon, int temperature) {
     return HourlyForecastData(
       hour,
       icon,
@@ -389,7 +409,7 @@ const $HourlyForecast = _$HourlyForecastTearOff();
 mixin _$HourlyForecast {
   String get hour;
   String get icon;
-  String get temperature;
+  int get temperature;
 
   $HourlyForecastCopyWith<HourlyForecast> get copyWith;
 }
@@ -399,7 +419,7 @@ abstract class $HourlyForecastCopyWith<$Res> {
   factory $HourlyForecastCopyWith(
           HourlyForecast value, $Res Function(HourlyForecast) then) =
       _$HourlyForecastCopyWithImpl<$Res>;
-  $Res call({String hour, String icon, String temperature});
+  $Res call({String hour, String icon, int temperature});
 }
 
 /// @nodoc
@@ -421,7 +441,7 @@ class _$HourlyForecastCopyWithImpl<$Res>
       hour: hour == freezed ? _value.hour : hour as String,
       icon: icon == freezed ? _value.icon : icon as String,
       temperature:
-          temperature == freezed ? _value.temperature : temperature as String,
+          temperature == freezed ? _value.temperature : temperature as int,
     ));
   }
 }
@@ -433,7 +453,7 @@ abstract class $HourlyForecastDataCopyWith<$Res>
           HourlyForecastData value, $Res Function(HourlyForecastData) then) =
       _$HourlyForecastDataCopyWithImpl<$Res>;
   @override
-  $Res call({String hour, String icon, String temperature});
+  $Res call({String hour, String icon, int temperature});
 }
 
 /// @nodoc
@@ -456,7 +476,7 @@ class _$HourlyForecastDataCopyWithImpl<$Res>
     return _then(HourlyForecastData(
       hour == freezed ? _value.hour : hour as String,
       icon == freezed ? _value.icon : icon as String,
-      temperature == freezed ? _value.temperature : temperature as String,
+      temperature == freezed ? _value.temperature : temperature as int,
     ));
   }
 }
@@ -473,7 +493,7 @@ class _$HourlyForecastData implements HourlyForecastData {
   @override
   final String icon;
   @override
-  final String temperature;
+  final int temperature;
 
   @override
   String toString() {
@@ -506,15 +526,15 @@ class _$HourlyForecastData implements HourlyForecastData {
 }
 
 abstract class HourlyForecastData implements HourlyForecast {
-  const factory HourlyForecastData(
-      String hour, String icon, String temperature) = _$HourlyForecastData;
+  const factory HourlyForecastData(String hour, String icon, int temperature) =
+      _$HourlyForecastData;
 
   @override
   String get hour;
   @override
   String get icon;
   @override
-  String get temperature;
+  int get temperature;
   @override
   $HourlyForecastDataCopyWith<HourlyForecastData> get copyWith;
 }
@@ -699,9 +719,9 @@ class _$WeatherStatusTearOff {
   const _$WeatherStatusTearOff();
 
 // ignore: unused_element
-  WeatherSuccess success(Weather weater) {
+  WeatherSuccess success(Weather weather) {
     return WeatherSuccess(
-      weater,
+      weather,
     );
   }
 
@@ -721,12 +741,12 @@ const $WeatherStatus = _$WeatherStatusTearOff();
 mixin _$WeatherStatus {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result success(Weather weater),
+    @required Result success(Weather weather),
     @required Result error(String message),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result success(Weather weater),
+    Result success(Weather weather),
     Result error(String message),
     @required Result orElse(),
   });
@@ -765,9 +785,9 @@ abstract class $WeatherSuccessCopyWith<$Res> {
   factory $WeatherSuccessCopyWith(
           WeatherSuccess value, $Res Function(WeatherSuccess) then) =
       _$WeatherSuccessCopyWithImpl<$Res>;
-  $Res call({Weather weater});
+  $Res call({Weather weather});
 
-  $WeatherCopyWith<$Res> get weater;
+  $WeatherCopyWith<$Res> get weather;
 }
 
 /// @nodoc
@@ -783,47 +803,47 @@ class _$WeatherSuccessCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object weater = freezed,
+    Object weather = freezed,
   }) {
     return _then(WeatherSuccess(
-      weater == freezed ? _value.weater : weater as Weather,
+      weather == freezed ? _value.weather : weather as Weather,
     ));
   }
 
   @override
-  $WeatherCopyWith<$Res> get weater {
-    if (_value.weater == null) {
+  $WeatherCopyWith<$Res> get weather {
+    if (_value.weather == null) {
       return null;
     }
-    return $WeatherCopyWith<$Res>(_value.weater, (value) {
-      return _then(_value.copyWith(weater: value));
+    return $WeatherCopyWith<$Res>(_value.weather, (value) {
+      return _then(_value.copyWith(weather: value));
     });
   }
 }
 
 /// @nodoc
 class _$WeatherSuccess implements WeatherSuccess {
-  const _$WeatherSuccess(this.weater) : assert(weater != null);
+  const _$WeatherSuccess(this.weather) : assert(weather != null);
 
   @override
-  final Weather weater;
+  final Weather weather;
 
   @override
   String toString() {
-    return 'WeatherStatus.success(weater: $weater)';
+    return 'WeatherStatus.success(weather: $weather)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is WeatherSuccess &&
-            (identical(other.weater, weater) ||
-                const DeepCollectionEquality().equals(other.weater, weater)));
+            (identical(other.weather, weather) ||
+                const DeepCollectionEquality().equals(other.weather, weather)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(weater);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(weather);
 
   @override
   $WeatherSuccessCopyWith<WeatherSuccess> get copyWith =>
@@ -832,24 +852,24 @@ class _$WeatherSuccess implements WeatherSuccess {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result success(Weather weater),
+    @required Result success(Weather weather),
     @required Result error(String message),
   }) {
     assert(success != null);
     assert(error != null);
-    return success(weater);
+    return success(weather);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result success(Weather weater),
+    Result success(Weather weather),
     Result error(String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (success != null) {
-      return success(weater);
+      return success(weather);
     }
     return orElse();
   }
@@ -881,9 +901,9 @@ class _$WeatherSuccess implements WeatherSuccess {
 }
 
 abstract class WeatherSuccess implements WeatherStatus {
-  const factory WeatherSuccess(Weather weater) = _$WeatherSuccess;
+  const factory WeatherSuccess(Weather weather) = _$WeatherSuccess;
 
-  Weather get weater;
+  Weather get weather;
   $WeatherSuccessCopyWith<WeatherSuccess> get copyWith;
 }
 
@@ -946,7 +966,7 @@ class _$WeatherError implements WeatherError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result success(Weather weater),
+    @required Result success(Weather weather),
     @required Result error(String message),
   }) {
     assert(success != null);
@@ -957,7 +977,7 @@ class _$WeatherError implements WeatherError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result success(Weather weater),
+    Result success(Weather weather),
     Result error(String message),
     @required Result orElse(),
   }) {

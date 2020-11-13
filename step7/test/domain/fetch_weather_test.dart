@@ -26,8 +26,8 @@ void main() {
         expected);
   });
   test('We want to fetch the weather from our location', () async {
-    final expected = Weather("", "", true, DateTime.now().toString(), 10, 10, 5,
-        'SE', 1099.9, 'url_icon', List(), List());
+    final expected = Weather("", "", true, DateTime.now().toString(), "", 10,
+        10, 5, 'SE', 1099.9, 'url_icon', List(), List());
 
     when(repository.getFromLocation(any))
         .thenAnswer((realInvocation) async => WeatherStatus.success(expected));
@@ -52,6 +52,7 @@ void main() {
         "France",
         false,
         DateTime.now().toString(),
+        "",
         10,
         10,
         5,

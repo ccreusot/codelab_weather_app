@@ -7,7 +7,12 @@ import 'package:test/test.dart';
 class MockRepository extends Mock implements WatchedCitiesRepository {}
 
 void main() {
-  final repository = MockRepository();
+  WatchedCitiesRepository repository;
+
+  setUp(() {
+    repository = MockRepository();
+  });
+
   test('We want save a city in our watched cities', () {
     final city = City("Paris", "France", "paris");
     final useCase = AddCityToWatch(repository);
@@ -15,5 +20,13 @@ void main() {
     useCase(city);
 
     verify(repository.addCity(city));
+  });
+
+  test('We want to do nothing if city is null', () {
+    final useCase = AddCityToWatch(repository);
+
+    useCase(null);
+
+    verifyZeroInteractions(repository);
   });
 }

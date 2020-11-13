@@ -17,13 +17,13 @@ class FetchWeather {
     return await option.when(aroundMe: (location) async {
       final result = await this._locationUseCase(location);
       if (result is WeatherSuccess) {
-        return result.weater;
+        return result.weather;
       }
       return null;
     }, inCity: (city) async {
       final result = await this._cityUseCase(city);
       if (result is WeatherSuccess) {
-        return result.weater;
+        return result.weather;
       }
       return null;
     });

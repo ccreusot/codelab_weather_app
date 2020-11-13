@@ -9,6 +9,6 @@ abstract class City with _$City {
 
 @freezed
 abstract class CitiesStatus with _$CitiesStatus {
-  const factory CitiesStatus.success(List<City> city) = CitiesSucess;
+  const factory CitiesStatus.success(List<City> city) = CitiesSuccess;
   const factory CitiesStatus.error([String message]) = CitiesError;
 }

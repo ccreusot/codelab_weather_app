@@ -13,13 +13,12 @@ abstract class Cities with _$Cities {
 
 @freezed
 abstract class City with _$City {
-  @HiveType(typeId: 2, adapterName: 'CityClassAdapter')
   const factory City(
-      @HiveField(0) String name,
-      @HiveField(1) @nullable @JsonKey(name: "npa") String zipCode,
-      @HiveField(2) @nullable String region,
-      @HiveField(3) String country,
-      @HiveField(4) String url) = CityData;
+      String name,
+      @nullable @JsonKey(name: "npa") String zipCode,
+      @nullable String region,
+      String country,
+      String url) = CityData;
 
   factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
 }
