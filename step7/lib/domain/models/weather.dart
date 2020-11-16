@@ -23,7 +23,7 @@ abstract class Weather with _$Weather {
 @freezed
 abstract class HourlyForecast with _$HourlyForecast {
   const factory HourlyForecast(
-    String hour,
+    DateTime hour,
     String icon,
     int temperature,
   ) = HourlyForecastData;

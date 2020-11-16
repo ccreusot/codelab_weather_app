@@ -1,4 +1,5 @@
 import 'package:codelab_weather_app/domain/add_city_to_watch.dart';
+import 'package:codelab_weather_app/domain/fetch_hourly_forecast_by_hour.dart';
 import 'package:codelab_weather_app/domain/fetch_location.dart';
 import 'package:codelab_weather_app/domain/fetch_weather.dart';
 import 'package:codelab_weather_app/domain/fetch_weather_from_city.dart';
@@ -176,6 +177,7 @@ class _WeatherBodyState extends State<WeatherBody> {
       NetworkWeatherRepository(NetworkService.create());
 
   FetchWeather _fetchWeather;
+  FetchHourlyForecastByHour _fetchHourlyForecastByHour;
   Weather _weather = null;
   List<HourlyForecast> _hourlyForecast = null;
 
@@ -183,7 +185,7 @@ class _WeatherBodyState extends State<WeatherBody> {
   void initState() {
     _fetchWeather = FetchWeather(FetchWeatherFromLocation(_repository),
         FetchWeatherFromCity(_repository));
-
+    _fetchHourlyForecastByHour = FetchHourlyForecastByHour();
     fetchWeather(widget._selectedLocation);
     super.initState();
   }
@@ -307,12 +309,11 @@ class _WeatherBodyState extends State<WeatherBody> {
     }
 
     final weather = await _fetchWeather(option);
+    final hourlyForecast =
+        await _fetchHourlyForecastByHour(weather.hourlyForecast, currentHour);
     setState(() {
       _weather = weather;
-      _hourlyForecast = _weather.hourlyForecast.where((element) {
-        final hour = Jiffy(element.hour.replaceAll("H", ":"), "h:mm").hour;
-        return hour >= currentHour;
-      }).toList();
+      _hourlyForecast = hourlyForecast;
     });
   }
 }
@@ -328,9 +329,9 @@ class WeatherConditionByHour extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentHour = DateTime.now().hour;
-    final entryHour = Jiffy(entry.hour.replaceAll("H", ":"), "h:mm").hour;
+    final entryHour = entry.hour;
     return Card(
-      color: currentHour == entryHour ? Colors.blue : Colors.white,
+      color: currentHour == entryHour.hour ? Colors.blue : Colors.white,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Padding(
@@ -341,11 +342,11 @@ class WeatherConditionByHour extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Text(
-                entry.hour,
+                Jiffy(entryHour).Hm,
                 style: TextStyle(
                   fontSize: 9,
                   color:
-                      currentHour == entryHour ? Colors.white : Colors.black45,
+                      currentHour == entryHour.hour ? Colors.white : Colors.black45,
                 ),
               ),
             ),
@@ -362,7 +363,7 @@ class WeatherConditionByHour extends StatelessWidget {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
-                    color: currentHour == entryHour
+                    color: currentHour == entryHour.hour
                         ? Colors.white
                         : Colors.black54),
               ),

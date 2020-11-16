@@ -56,11 +56,11 @@ void main() {
         "https://prevision-meteo.ch/style/images/icon/eclaircies-big.png",
         <HourlyForecast>[
           HourlyForecast(
-              "0H00",
+              DateTime(1970, 1, 1, 0),
               "https://prevision-meteo.ch/style/images/icon/nuit-nuageuse.png",
               9),
           HourlyForecast(
-              "1H00",
+              DateTime(1970, 1, 1, 1),
               "https://prevision-meteo.ch/style/images/icon/nuit-nuageuse.png",
               10),
         ],
@@ -125,11 +125,11 @@ void main() {
         "https://prevision-meteo.ch/style/images/icon/fortement-nuageux-big.png",
         <HourlyForecast>[
           HourlyForecast(
-              "0H00",
+              DateTime(1970, 1, 1, 0),
               "https://prevision-meteo.ch/style/images/icon/nuit-claire.png",
               11),
           HourlyForecast(
-              "1H00",
+              DateTime(1970, 1, 1, 1),
               "https://prevision-meteo.ch/style/images/icon/nuit-nuageuse.png",
               11),
         ],

@@ -32,13 +32,9 @@ class LocalWatchedCitiesRepository implements WatchedCitiesRepository {
   }
 }
 
-@HiveType()
 class _City extends HiveObject {
-  @HiveField(0)
   String name;
-  @HiveField(1)
   String country;
-  @HiveField(2)
   String url;
 }
 

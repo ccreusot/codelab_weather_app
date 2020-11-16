@@ -5,6 +5,7 @@ import 'package:codelab_weather_app/network/network_service.dart';
 import 'package:codelab_weather_app/network/models/weather.dart'
     as NetworkWeather;
 import 'package:http/http.dart';
+import 'package:jiffy/jiffy.dart';
 
 class NetworkWeatherRepository implements WeatherRepository {
   final NetworkService _service;
@@ -65,7 +66,9 @@ class NetworkWeatherRepository implements WeatherRepository {
         weather.currentCondition.iconBig,
         weather.fcstDay0.hourlyData.entries.map((entry) {
           return HourlyForecast(
-              entry.key, entry.value.icon, entry.value.tMP2m.toInt());
+              Jiffy(entry.key.replaceAll("H", ":"), "h:mm").dateTime,
+              entry.value.icon,
+              entry.value.tMP2m.toInt());
         }).toList(),
         <NetworkWeather.ForecastDay>[
           weather.fcstDay1,

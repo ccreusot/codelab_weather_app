@@ -392,7 +392,7 @@ class _$HourlyForecastTearOff {
   const _$HourlyForecastTearOff();
 
 // ignore: unused_element
-  HourlyForecastData call(String hour, String icon, int temperature) {
+  HourlyForecastData call(DateTime hour, String icon, int temperature) {
     return HourlyForecastData(
       hour,
       icon,
@@ -407,7 +407,7 @@ const $HourlyForecast = _$HourlyForecastTearOff();
 
 /// @nodoc
 mixin _$HourlyForecast {
-  String get hour;
+  DateTime get hour;
   String get icon;
   int get temperature;
 
@@ -419,7 +419,7 @@ abstract class $HourlyForecastCopyWith<$Res> {
   factory $HourlyForecastCopyWith(
           HourlyForecast value, $Res Function(HourlyForecast) then) =
       _$HourlyForecastCopyWithImpl<$Res>;
-  $Res call({String hour, String icon, int temperature});
+  $Res call({DateTime hour, String icon, int temperature});
 }
 
 /// @nodoc
@@ -438,7 +438,7 @@ class _$HourlyForecastCopyWithImpl<$Res>
     Object temperature = freezed,
   }) {
     return _then(_value.copyWith(
-      hour: hour == freezed ? _value.hour : hour as String,
+      hour: hour == freezed ? _value.hour : hour as DateTime,
       icon: icon == freezed ? _value.icon : icon as String,
       temperature:
           temperature == freezed ? _value.temperature : temperature as int,
@@ -453,7 +453,7 @@ abstract class $HourlyForecastDataCopyWith<$Res>
           HourlyForecastData value, $Res Function(HourlyForecastData) then) =
       _$HourlyForecastDataCopyWithImpl<$Res>;
   @override
-  $Res call({String hour, String icon, int temperature});
+  $Res call({DateTime hour, String icon, int temperature});
 }
 
 /// @nodoc
@@ -474,7 +474,7 @@ class _$HourlyForecastDataCopyWithImpl<$Res>
     Object temperature = freezed,
   }) {
     return _then(HourlyForecastData(
-      hour == freezed ? _value.hour : hour as String,
+      hour == freezed ? _value.hour : hour as DateTime,
       icon == freezed ? _value.icon : icon as String,
       temperature == freezed ? _value.temperature : temperature as int,
     ));
@@ -489,7 +489,7 @@ class _$HourlyForecastData implements HourlyForecastData {
         assert(temperature != null);
 
   @override
-  final String hour;
+  final DateTime hour;
   @override
   final String icon;
   @override
@@ -526,11 +526,11 @@ class _$HourlyForecastData implements HourlyForecastData {
 }
 
 abstract class HourlyForecastData implements HourlyForecast {
-  const factory HourlyForecastData(String hour, String icon, int temperature) =
-      _$HourlyForecastData;
+  const factory HourlyForecastData(
+      DateTime hour, String icon, int temperature) = _$HourlyForecastData;
 
   @override
-  String get hour;
+  DateTime get hour;
   @override
   String get icon;
   @override
