@@ -1,30 +1,29 @@
-import 'package:codelab_weather_app/domain/fetch_cities.dart';
+import 'package:codelab_weather_app/domain/usecases/fetch_cities.dart';
 import 'package:codelab_weather_app/domain/models/city.dart';
 import 'package:codelab_weather_app/domain/repositories/cities_repository.dart';
-import 'package:codelab_weather_app/domain/search_cities.dart';
-import 'package:codelab_weather_app/network/network_service.dart';
-import 'package:codelab_weather_app/network/repositories/network_cities_repository.dart';
+import 'package:codelab_weather_app/domain/usecases/search_cities.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 
 class CitiesPage extends StatefulWidget {
+  final FetchCities _fetchCities;
+  final SearchCities _searchCities;
+
+  CitiesPage({Key key, @required CitiesRepository citiesRepository})
+      : _fetchCities = FetchCities(citiesRepository),
+        _searchCities = SearchCities(),
+        super(key: key);
+
   @override
   _CitiesPageState createState() => _CitiesPageState();
 }
 
 class _CitiesPageState extends State<CitiesPage> {
-  CitiesRepository _repository =
-      NetworkCitiesRepository(NetworkService.create());
-  FetchCities _fetchCities;
-  SearchCities _searchCities;
-
   List<City> _cities = [];
   List<City> _citiesFiltered = [];
 
   @override
   void initState() {
-    _fetchCities = FetchCities(_repository);
-    _searchCities = SearchCities();
     fetchCities();
     super.initState();
   }
@@ -44,7 +43,7 @@ class _CitiesPageState extends State<CitiesPage> {
               child: TextField(
                 decoration: InputDecoration(labelText: 'Rechercher'),
                 onChanged: (value) {
-                  _searchCities(_cities, value).then((value) {
+                  widget._searchCities(_cities, value).then((value) {
                     setState(() {
                       _citiesFiltered = value;
                     });
@@ -80,7 +79,7 @@ class _CitiesPageState extends State<CitiesPage> {
 
   void fetchCities() async {
     try {
-      final result = await _fetchCities();
+      final result = await widget._fetchCities();
       setState(() {
         _cities = (result as CitiesSuccess).city;
         _citiesFiltered = _cities;

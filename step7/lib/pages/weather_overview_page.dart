@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:codelab_weather_app/domain/models/weather.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 
 class WeatherOverviewPage extends StatelessWidget {
@@ -20,7 +19,7 @@ class WeatherOverviewPage extends StatelessWidget {
             ? Row(
                 children: [
                   Text(
-                    "${weather.cityName},",
+                    "${weather.cityName}, ",
                     style: TextStyle(color: Colors.white),
                   ),
                   Text(
@@ -37,7 +36,7 @@ class WeatherOverviewPage extends StatelessWidget {
         child: ListView(
           children: [
             Text(
-              "Next 4 Days",
+              "4 prochains jours",
               style: TextStyle(color: Colors.white),
             ),
             ...weather.dailyForecast.map((e) => WeatherDayLine(

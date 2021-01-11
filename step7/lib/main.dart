@@ -1,3 +1,8 @@
+import 'package:codelab_weather_app/local/repositories/local_watched_cities_repository.dart';
+import 'package:codelab_weather_app/local/repositories/location_repository.dart';
+import 'package:codelab_weather_app/network/network_service.dart';
+import 'package:codelab_weather_app/network/repositories/network_cities_repository.dart';
+import 'package:codelab_weather_app/network/repositories/network_weather_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -13,28 +18,22 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final NetworkService _service = NetworkService.create();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage("Weather"),
+      home: HomePage(
+          title: "Weather",
+          weatherRepository: NetworkWeatherRepository(_service),
+          citiesRepository: NetworkCitiesRepository(_service),
+          watchedCitiesRepository: LocalWatchedCitiesRepository(),
+          locationRepository: LocalLocationRepository()),
     );
   }
 }

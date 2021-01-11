@@ -37,6 +37,7 @@ dev_dependencies:
   freezed: ^0.12.2
   json_serializable: ^3.5.0
   hive_generator: ^0.8.2
+  network_image_mock: ^1.0.2
 
 flutter:
 

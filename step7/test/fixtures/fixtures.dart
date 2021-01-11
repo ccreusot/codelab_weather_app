@@ -1,4 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-Future<File> fixture(String name) async => File('test/fixtures/$name');
+Future<File> fixture(String name) async {
+  return File('test/fixtures/$name');
+}

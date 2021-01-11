@@ -14,10 +14,8 @@ class _$FetchWeatherOptionTearOff {
   const _$FetchWeatherOptionTearOff();
 
 // ignore: unused_element
-  AroundMe aroundMe(Location location) {
-    return AroundMe(
-      location,
-    );
+  AroundMe aroundMe() {
+    return const AroundMe();
   }
 
 // ignore: unused_element
@@ -36,12 +34,12 @@ const $FetchWeatherOption = _$FetchWeatherOptionTearOff();
 mixin _$FetchWeatherOption {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result aroundMe(Location location),
+    @required Result aroundMe(),
     @required Result inCity(String cityUrl),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result aroundMe(Location location),
+    Result aroundMe(),
     Result inCity(String cityUrl),
     @required Result orElse(),
   });
@@ -79,9 +77,6 @@ class _$FetchWeatherOptionCopyWithImpl<$Res>
 abstract class $AroundMeCopyWith<$Res> {
   factory $AroundMeCopyWith(AroundMe value, $Res Function(AroundMe) then) =
       _$AroundMeCopyWithImpl<$Res>;
-  $Res call({Location location});
-
-  $LocationCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -93,77 +88,46 @@ class _$AroundMeCopyWithImpl<$Res>
 
   @override
   AroundMe get _value => super._value as AroundMe;
-
-  @override
-  $Res call({
-    Object location = freezed,
-  }) {
-    return _then(AroundMe(
-      location == freezed ? _value.location : location as Location,
-    ));
-  }
-
-  @override
-  $LocationCopyWith<$Res> get location {
-    if (_value.location == null) {
-      return null;
-    }
-    return $LocationCopyWith<$Res>(_value.location, (value) {
-      return _then(_value.copyWith(location: value));
-    });
-  }
 }
 
 /// @nodoc
 class _$AroundMe implements AroundMe {
-  const _$AroundMe(this.location) : assert(location != null);
-
-  @override
-  final Location location;
+  const _$AroundMe();
 
   @override
   String toString() {
-    return 'FetchWeatherOption.aroundMe(location: $location)';
+    return 'FetchWeatherOption.aroundMe()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is AroundMe &&
-            (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)));
+    return identical(this, other) || (other is AroundMe);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(location);
-
-  @override
-  $AroundMeCopyWith<AroundMe> get copyWith =>
-      _$AroundMeCopyWithImpl<AroundMe>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result aroundMe(Location location),
+    @required Result aroundMe(),
     @required Result inCity(String cityUrl),
   }) {
     assert(aroundMe != null);
     assert(inCity != null);
-    return aroundMe(location);
+    return aroundMe();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result aroundMe(Location location),
+    Result aroundMe(),
     Result inCity(String cityUrl),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (aroundMe != null) {
-      return aroundMe(location);
+      return aroundMe();
     }
     return orElse();
   }
@@ -195,10 +159,7 @@ class _$AroundMe implements AroundMe {
 }
 
 abstract class AroundMe implements FetchWeatherOption {
-  const factory AroundMe(Location location) = _$AroundMe;
-
-  Location get location;
-  $AroundMeCopyWith<AroundMe> get copyWith;
+  const factory AroundMe() = _$AroundMe;
 }
 
 /// @nodoc
@@ -258,7 +219,7 @@ class _$InCity implements InCity {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result aroundMe(Location location),
+    @required Result aroundMe(),
     @required Result inCity(String cityUrl),
   }) {
     assert(aroundMe != null);
@@ -269,7 +230,7 @@ class _$InCity implements InCity {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result aroundMe(Location location),
+    Result aroundMe(),
     Result inCity(String cityUrl),
     @required Result orElse(),
   }) {
