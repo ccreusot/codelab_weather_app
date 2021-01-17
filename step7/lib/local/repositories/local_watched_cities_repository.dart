@@ -3,7 +3,7 @@ import 'package:codelab_weather_app/domain/repositories/watched_cities_repositor
 import 'package:hive/hive.dart';
 
 class LocalWatchedCitiesRepository implements WatchedCitiesRepository {
-  LocalWatchedCitiesRepository() {}
+  LocalWatchedCitiesRepository();
 
   @override
   Future<void> addCity(City city) async {
@@ -25,10 +25,8 @@ class LocalWatchedCitiesRepository implements WatchedCitiesRepository {
   }
 
   void initHive() async {
-    if (!Hive.isAdapterRegistered(0))
-      await Hive.registerAdapter(_CityAdapter());
-    if (!Hive.isBoxOpen("selected_cities"))
-      await Hive.openBox<_City>('selected_cities');
+    if (!Hive.isAdapterRegistered(0)) await Hive.registerAdapter(_CityAdapter());
+    if (!Hive.isBoxOpen("selected_cities")) await Hive.openBox<_City>('selected_cities');
   }
 }
 

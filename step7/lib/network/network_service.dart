@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:isolate';
 
 import 'package:codelab_weather_app/network/models/city.dart';
 import 'package:codelab_weather_app/network/models/weather.dart';
@@ -32,8 +31,7 @@ class _NetworkService implements NetworkService {
 
   @override
   Future<Weather> getLocalWeather(double latitude, double longitude) async {
-    final response =
-        await _client.get(_baseUrl + "lat=${latitude}lng=${longitude}");
+    final response = await _client.get(_baseUrl + "lat=${latitude}lng=${longitude}");
     return _decodeAndParseWeather(response.body);
   }
 

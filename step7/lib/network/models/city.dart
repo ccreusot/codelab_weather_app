@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
 
 part 'city.freezed.dart';
 part 'city.g.dart';
@@ -13,12 +12,8 @@ abstract class Cities with _$Cities {
 
 @freezed
 abstract class City with _$City {
-  const factory City(
-      String name,
-      @nullable @JsonKey(name: "npa") String zipCode,
-      @nullable String region,
-      String country,
-      String url) = CityData;
+  const factory City(String name, @nullable @JsonKey(name: "npa") String zipCode, @nullable String region,
+      String country, String url) = CityData;
 
   factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
 }

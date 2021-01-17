@@ -2,7 +2,6 @@ import 'package:codelab_weather_app/domain/usecases/fetch_location.dart';
 import 'package:codelab_weather_app/domain/usecases/fetch_weather_from_city.dart';
 import 'package:codelab_weather_app/domain/usecases/fetch_weather_from_location.dart';
 import 'package:codelab_weather_app/domain/models/fetch_weather_option.dart';
-import 'package:codelab_weather_app/domain/models/location.dart';
 import 'package:codelab_weather_app/domain/models/weather.dart';
 
 class FetchWeather {
@@ -11,9 +10,7 @@ class FetchWeather {
   final FetchWeatherFromCity _cityUseCase;
 
   const FetchWeather(
-      FetchLocation fetchLocationUseCase,
-      FetchWeatherFromLocation locationUseCase,
-      FetchWeatherFromCity cityUseCase)
+      FetchLocation fetchLocationUseCase, FetchWeatherFromLocation locationUseCase, FetchWeatherFromCity cityUseCase)
       : _fetchLocationUseCase = fetchLocationUseCase,
         _locationUseCase = locationUseCase,
         _cityUseCase = cityUseCase;
