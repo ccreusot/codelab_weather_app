@@ -1,7 +1,7 @@
-import 'package:codelab_weather_app/domain/repositories/cities_repository.dart';
-import 'package:codelab_weather_app/domain/repositories/location_repository.dart';
-import 'package:codelab_weather_app/domain/repositories/watched_cities_repository.dart';
-import 'package:codelab_weather_app/domain/repositories/weather_repository.dart';
+import 'package:codelab_weather_app/cities/repositories/cities_repository.dart';
+import 'package:codelab_weather_app/weather/repositories/location_repository.dart';
+import 'package:codelab_weather_app/cities/repositories/watched_cities_repository.dart';
+import 'package:codelab_weather_app/weather/repositories/weather_repository.dart';
 import 'package:codelab_weather_app/local/repositories/local_watched_cities_repository.dart';
 import 'package:codelab_weather_app/local/repositories/location_repository.dart';
 import 'package:codelab_weather_app/network/network_service.dart';
@@ -9,14 +9,14 @@ import 'package:codelab_weather_app/network/repositories/network_cities_reposito
 import 'package:codelab_weather_app/network/repositories/network_weather_repository.dart';
 import 'package:codelab_weather_app/weather/weather_page.dart';
 import 'package:codelab_weather_app/cities/cities_page.dart';
-import 'package:codelab_weather_app/domain/usecases/fetch_weather.dart';
-import 'package:codelab_weather_app/domain/usecases/fetch_location.dart';
-import 'package:codelab_weather_app/domain/usecases/fetch_weather_from_city.dart';
-import 'package:codelab_weather_app/domain/usecases/fetch_weather_from_location.dart';
-import 'package:codelab_weather_app/domain/usecases/load_watched_cities.dart';
-import 'package:codelab_weather_app/domain/usecases/add_city_to_watch.dart';
-import 'package:codelab_weather_app/domain/usecases/fetch_cities.dart';
-import 'package:codelab_weather_app/domain/usecases/search_cities.dart';
+import 'package:codelab_weather_app/weather/usecases/fetch_weather.dart';
+import 'package:codelab_weather_app/weather/usecases/fetch_location.dart';
+import 'package:codelab_weather_app/weather/usecases/fetch_weather_from_city.dart';
+import 'package:codelab_weather_app/weather/usecases/fetch_weather_from_location.dart';
+import 'package:codelab_weather_app/cities/usecases/load_watched_cities.dart';
+import 'package:codelab_weather_app/cities/usecases/add_city_to_watch.dart';
+import 'package:codelab_weather_app/cities/usecases/fetch_cities.dart';
+import 'package:codelab_weather_app/cities/usecases/search_cities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -52,11 +52,8 @@ Future<void> main() async {
             LoadWatchedCities(Provider.of<WatchedCitiesRepository>(context, listen: false))),
       ),
       ChangeNotifierProvider<CitiesPageViewModel>(
-        create: (context) => CitiesPageViewModel(
-            FetchCities(Provider.of<CitiesRepository>(context, listen: false)),
-            SearchCities(),
-            AddCityToWatch(Provider.of<WatchedCitiesRepository>(context, listen: false))
-          ),
+        create: (context) => CitiesPageViewModel(FetchCities(Provider.of<CitiesRepository>(context, listen: false)),
+            SearchCities(), AddCityToWatch(Provider.of<WatchedCitiesRepository>(context, listen: false))),
       ),
     ],
     child: MyApp(),

@@ -1,7 +1,7 @@
-import 'package:codelab_weather_app/domain/usecases/fetch_cities.dart';
-import 'package:codelab_weather_app/domain/models/city.dart';
-import 'package:codelab_weather_app/domain/usecases/search_cities.dart';
-import 'package:codelab_weather_app/domain/usecases/add_city_to_watch.dart';
+import 'package:codelab_weather_app/cities/usecases/fetch_cities.dart';
+import 'package:codelab_weather_app/cities/models/city.dart';
+import 'package:codelab_weather_app/cities/usecases/search_cities.dart';
+import 'package:codelab_weather_app/cities/usecases/add_city_to_watch.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

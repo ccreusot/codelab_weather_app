@@ -1,5 +1,5 @@
-import 'package:codelab_weather_app/domain/models/city.dart';
-import 'package:codelab_weather_app/domain/repositories/watched_cities_repository.dart';
+import 'package:codelab_weather_app/cities/models/city.dart';
+import 'package:codelab_weather_app/cities/repositories/watched_cities_repository.dart';
 import 'package:hive/hive.dart';
 
 class LocalWatchedCitiesRepository implements WatchedCitiesRepository {

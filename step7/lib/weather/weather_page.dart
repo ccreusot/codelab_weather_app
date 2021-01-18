@@ -1,10 +1,10 @@
-import 'package:codelab_weather_app/domain/models/fetch_weather_option.dart';
-import 'package:codelab_weather_app/domain/models/weather.dart';
+import 'package:codelab_weather_app/weather/models/fetch_weather_option.dart';
+import 'package:codelab_weather_app/weather/models/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:provider/provider.dart';
-import 'package:codelab_weather_app/domain/usecases/fetch_weather.dart';
-import 'package:codelab_weather_app/domain/usecases/load_watched_cities.dart';
+import 'package:codelab_weather_app/weather/usecases/fetch_weather.dart';
+import 'package:codelab_weather_app/cities/usecases/load_watched_cities.dart';
 
 part 'weather_page.freezed.dart';
 
