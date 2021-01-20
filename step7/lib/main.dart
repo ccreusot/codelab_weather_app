@@ -7,6 +7,8 @@ import 'package:codelab_weather_app/local/repositories/location_repository.dart'
 import 'package:codelab_weather_app/network/network_service.dart';
 import 'package:codelab_weather_app/network/repositories/network_cities_repository.dart';
 import 'package:codelab_weather_app/network/repositories/network_weather_repository.dart';
+import 'package:codelab_weather_app/weather/viewmodels/weather_page_viewmodel.dart';
+import 'package:codelab_weather_app/cities/viewmodels/cities_page_viewmodel.dart';
 import 'package:codelab_weather_app/weather/weather_page.dart';
 import 'package:codelab_weather_app/cities/cities_page.dart';
 import 'package:codelab_weather_app/weather/usecases/fetch_weather.dart';
